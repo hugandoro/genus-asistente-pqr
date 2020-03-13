@@ -5,7 +5,7 @@
 ?>
 <html lang="es">
 	<head>
-		<title>Gecopa Web</title>
+		<title>Asistente PQR-Web</title>
         
         <meta charset="utf-8" />
 

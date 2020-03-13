@@ -2,16 +2,6 @@
 class Medico
 {
 	private $pdo;
-    
-    //public $medico_id;
-    //public $medico_usuario;
-    //public $medico_password;
-    //public $medico_token;
-	//public $medico_token_caducidad;
-	//public $medico_nivel;
-	//public $medico_estado;
-	//public $medico_nombres;
-	//public $medico_apellidos;
 
 	public function __CONSTRUCT(){
 		try{

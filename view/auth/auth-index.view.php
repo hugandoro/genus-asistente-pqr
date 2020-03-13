@@ -1,5 +1,5 @@
 <!-- Vista para pantalla de login --> 
-<h1 class="page-header" align="Center">Bienvenido a Gecopa Web</h1>
+<h1 class="page-header" align="Center">Asistente virtual de seguimiento a PQR</h1>
 
 <div class="row">
     <div class="col-sm-4"></div>
@@ -8,7 +8,7 @@
         <!-- El form de logueo hace un llamado al controlador Auth con la accion/metodo Autenticar --> 
         <div class="panel panel-primary">
             <div class="panel-heading">
-              <h3 class="panel-title">Digite sus credenciales para ingresar...</h3>
+              <h3 class="panel-title">Validacion de acceso</h3>
             </div>
             <div class="panel-body">
                 <form method="post" action="?c=Auth&a=Autenticar" role="login">

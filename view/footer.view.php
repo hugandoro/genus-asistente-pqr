@@ -3,8 +3,8 @@
                     <hr />
                     <footer class="text-center well">
                         <p><img src="assets/img/logo_genus_640x220.png" width=200px></p>
-                        <p><br>Un producto Genus Group SAS - Colombia © 2018</p>
-                        <p>Licencia de uso Centro Naturista San Lazaro - 2018</p>
+                        <p><br>Secretaria de Planeacion - Municipio de Dosquebradas</p>
+                        <p>Desarrollado por <a href="https://www.genusgroupsas.com">Genus Group SAS</a> - Colombia © 2020</p>
                     </footer>                
                 </div>    
             </div>
