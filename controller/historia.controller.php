@@ -63,14 +63,30 @@ class HistoriaController{
         // Datos de la ficha N° 1 TAB - IDENTIFICACION
         $historiaMedica->historia_id = $_REQUEST['id'];
         $historiaMedica->historia_fecha = $_REQUEST['fecha'];
+        $historiaMedica->historia_clasificacion_pqr = $_REQUEST['clasificacion_pqr'];
         $historiaMedica->historia_cedula = $_REQUEST['cedula'];
         $historiaMedica->historia_nombre_1 = $_REQUEST['nombre_1'];
         $historiaMedica->historia_nombre_2 = $_REQUEST['nombre_2'];
         $historiaMedica->historia_apellido_1 = $_REQUEST['apellido_1'];
         $historiaMedica->historia_apellido_2 = $_REQUEST['apellido_2'];
         $historiaMedica->historia_direccion = $_REQUEST['direccion'];
+        $historiaMedica->historia_entidad = $_REQUEST['entidad'];
+        $historiaMedica->historia_cargo = $_REQUEST['cargo'];
         $historiaMedica->historia_telefono = $_REQUEST['telefono'];
-        
+        $historiaMedica->historia_email = $_REQUEST['email'];
+        $historiaMedica->historia_tipo_usuario = $_REQUEST['tipo_usuario'];
+        $historiaMedica->historia_clase_pqr = $_REQUEST['clase_pqr'];
+        $historiaMedica->historia_canal = $_REQUEST['canal'];
+        $historiaMedica->historia_radicado_gestion = $_REQUEST['radicado_gestion'];
+        $historiaMedica->historia_num_radicado_gestion = $_REQUEST['num_radicado_gestion'];
+        $historiaMedica->historia_radicado_planeacion = $_REQUEST['radicado_planeacion'];
+        $historiaMedica->historia_num_radicado_planeacion = $_REQUEST['num_radicado_planeacion'];
+        $historiaMedica->historia_area = $_REQUEST['area'];
+        $historiaMedica->historia_funcionario = $_REQUEST['funcionario'];
+        $historiaMedica->historia_medio_respuesta = $_REQUEST['medio_respuesta'];
+        $historiaMedica->historia_fecha_respuesta = $_REQUEST['fecha_respuesta'];
+        $historiaMedica->historia_num_oficio_respuesta = $_REQUEST['num_oficio_respuesta'];
+        $historiaMedica->historia_respuesta = $_REQUEST['respuesta'];        
 
         // Si existe un ID estamos editando y llama al metodo actualizar del modelo, de lo contrario hace un llamado al metodo registrar del modelo
         if ($historiaMedica->historia_id > 0 ){

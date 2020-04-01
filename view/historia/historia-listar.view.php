@@ -14,7 +14,7 @@
             <th>Canal</th>
             <th>Estado</th>
             <th>Dias restantes</th>
-            <th></th>
+            <th>Estado</th>
             <th style="width:20px;"></th>
             <th style="width:20px;"></th>
         </tr>
@@ -26,10 +26,11 @@
             <td><?php echo $r->historia_cedula; ?></td>
             <td><?php echo $r->historia_nombre_1; ?></td>
             <td><?php echo $r->historia_apellido_1; ?></td>
-            <td>Peticion</td>
-            <td>Ventanilla unica</td>
-            <td>Abierta</td>
-            <td>12</td>
+            <td><?php echo $r->historia_clase_pqr; ?></td>
+            <td><?php echo $r->historia_canal; ?></td>
+            <td><?php if($r->historia_fecha_respuesta == NULL) echo "Abierta"; else echo "Cerrada" ?></td>
+            <td><?php if($r->historia_fecha_respuesta == NULL) echo "15"; else echo "-" ?></td></td>
+            
             <td><img src="assets/img/verde.png" width=16px title="Semaforo PQR"></td>
 
             <td>

@@ -16,21 +16,38 @@
             <div class="row" id="tab0" data-role="tab">
                 <!-- Coleccion menu pestañas de TAB -->
                 <ul class="nav nav-tabs">
-                    <li class="active"><a id="tabLabel1" href="#tabContent1" data-toggle="tab">Ficha de la PQR</a></li>
+                    <li class="active"><a id="tabLabel1" href="#tabContent1" data-toggle="tab">Datos generales de la PQR</a></li>
+                    <li><a id="tabLabel2" href="#tabContent2" data-toggle="tab">Recepcion y Asignacion</a></li>
+                    <li><a id="tabLabel3" href="#tabContent3" data-toggle="tab">Tiempos y cierre de la PQR</a></li>
                 </ul>
 
                 <div class="tab-content">
-                    <!-- TAB Identificacion -->
+                    <!-- TAB Datos Generales -->
                     <div class="tab-pane active" id="tabContent1">
                         <div class="">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <br>
+                                    <br><br>
 
                                     <!-- Fila 1 -->
-                                    <div class="form-group col-md-6" style="display: block;">
-                                        <label for="fecha">ID unico de identificacion PQR</label>
-                                        <input onblur="Mayuscula(this);" readonly value="<?php echo $historiaMedica->historia_id; ?>" name="id" id="id" type="text" class="form-control" placeholder="Este codigo se generara automaticamente al guardar...">
+                                    <div class="form-group col-md-2" style="display: block;">
+                                        <label for="fecha">ID PQR</label>
+                                        <input onblur="Mayuscula(this);" readonly value="<?php echo $historiaMedica->historia_id; ?>" name="id" id="id" type="text" class="form-control" placeholder="N° automatico...">
+                                    </div>
+
+                                    <div class="form-group col-md-4" style="display: block;">
+                                        <label for="clasificacion_pqr">Clasificacion de la PQR</label>
+
+                                        <select name="clasificacion_pqr" id="clasificacion_pqr" class="form-control">                                                                                       
+                                            <option <?php if ($historiaMedica->historia_clasificacion_pqr == "CONCEPTO") echo 'selected' ?> value="CONCEPTO">CONCEPTOS SOBRE TRASLADOS DE POSTE - 30 dias</option>
+                                            <option <?php if ($historiaMedica->historia_clasificacion_pqr == "LICENCIA") echo 'selected' ?> value="LICENCIA">LICENCIAS DE INTERVENCIÓN Y OCUPACIÓN DE ESPACIO PÚBLICO - 45 dias</option>
+                                            <option <?php if ($historiaMedica->historia_clasificacion_pqr == "ORGANO_CONTROL") echo 'selected' ?> value="ORGANO_CONTROL">ÓRGANOS DE CONTROL, POLÍTICO, DISCIPLINARIO, FISCAL, JURISDICCIONAL, CIUDADANO - 5 dias</option>
+                                            <option <?php if ($historiaMedica->historia_clasificacion_pqr == "PETICION_AUTORIDAD") echo 'selected' ?> value="PETICION_AUTORIDAD">PETICIONES ENTRE AUTORIDADES - 10 dias</option>
+                                            <option <?php if ($historiaMedica->historia_clasificacion_pqr == "PETICION_INFORMACION") echo 'selected' ?> value="PETICION_INFORMACION">PETICIONES DE INFORMACIÓN Y DOCUMENTOS - 10 dias</option>
+                                            <option <?php if ($historiaMedica->historia_clasificacion_pqr == "PETICION_GENERAL") echo 'selected' ?> value="PETICION_GENERAL">PETICIONES DE INTERÉS GENERAL O PARTICULAR - 15 dias</option>
+                                            <option <?php if ($historiaMedica->historia_clasificacion_pqr == "PETICION_CONSULTA") echo 'selected' ?> value="PETICION_CONSULTA">PETICIONES DE CONSULTA - 30 dias</option>
+                                            <option <?php if ($historiaMedica->historia_clasificacion_pqr == "QUEJA") echo 'selected' ?> value="QUEJA">QUEJAS, RECLAMOS Y MANIFESTACIONES - 15 dias</option>                           
+                                        </select>
                                     </div>
 
                                     <div class="form-group col-md-6" style="display: block;">
@@ -67,29 +84,173 @@
 
                                     <div class="form-group col-md-3" style="display: block;">
                                         <label for="entidad">Barrio/Conjunto/Entidad/Empresa</label>
-                                        <input onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_telefono; ?>" name="entidad" id="entidad" type="text" class="form-control" placeholder="">
+                                        <input onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_entidad; ?>" name="entidad" id="entidad" type="text" class="form-control" placeholder="">
                                     </div>
 
-                                    <div class="form-group col-md-3" style="display: block;">
+                                    <div class="form-group col-md-6" style="display: block;">
+                                        <label for="cargo">Cargo/Funcion</label>
+
+                                        <select name="cargo" id="cargo" class="form-control">
+                                            <option <?php if ($historiaMedica->historia_cargo == "ADMINISTRADOR") echo 'selected' ?> value="ADMINISTRADOR">ADMINISTRADOR</option>
+                                            <option <?php if ($historiaMedica->historia_cargo == "CONCEJAL") echo 'selected' ?> value="CONCEJAL">CONCEJAL</option>
+                                            <option <?php if ($historiaMedica->historia_cargo == "COORDINADOR") echo 'selected' ?> value="COORDINADOR">COORDINADOR</option>
+                                            <option <?php if ($historiaMedica->historia_cargo == "DIRECTOR") echo 'selected' ?> value="DIRECTOR">DIRECTOR</option>
+                                            <option <?php if ($historiaMedica->historia_cargo == "GERENTE") echo 'selected' ?> value="GERENTE">GERENTE</option>
+                                            <option <?php if ($historiaMedica->historia_cargo == "PETICIONARIO") echo 'selected' ?> value="PETICIONARIO">PETICIONARIO</option>
+                                            <option <?php if ($historiaMedica->historia_cargo == "PRESIDENTE") echo 'selected' ?> value="PRESIDENTE">PRESIDENTE</option>
+                                            <option <?php if ($historiaMedica->historia_cargo == "REPRESENTANTE_LEGAL") echo 'selected' ?> value="REPRESENTANTE_LEGAL">REPRESENTANTE LEGAL</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Fila 4 --> 
+                                    <div class="form-group col-md-6" style="display: block;">
                                         <label for="telefono">Telefono</label>
                                         <input onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_telefono; ?>" name="telefono" id="telefono" type="number" class="form-control" placeholder="">
                                     </div>
 
-                                    <div class="form-group col-md-3" style="display: block;">
+                                    <div class="form-group col-md-6" style="display: block;">
                                         <label for="email">Email</label>
-                                        <input onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_telefono; ?>" name="email" id="email" type="email" class="form-control" placeholder="">
+                                        <input onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_email; ?>" name="email" id="email" type="email" class="form-control" placeholder="">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- TAB Recepcion y asignacion -->
+                    <div class="tab-pane" id="tabContent2">
+                        <div class="">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <br><br>
+
+                                    <!-- Fila 1 --> 
+                                    <div class="form-group col-md-4" style="display: block;">
+                                        <label for="tipo_usuario">Tipo usuario</label>
+
+                                        <select name="tipo_usuario" id="tipo_usuario" class="form-control">
+                                            <option <?php if ($historiaMedica->historia_tipo_usuario == "INTERNO") echo 'selected' ?> value="INTERNO">INTERNO</option>
+                                            <option <?php if ($historiaMedica->historia_tipo_usuario == "EXTERNO") echo 'selected' ?> value="EXTERNO">EXTERNO</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group col-md-4" style="display: block;">
+                                        <label for="clase_pqr">Naturaleza de la PQR</label>
+
+                                        <select name="clase_pqr" id="clase_pqr" class="form-control">
+                                            <option <?php if ($historiaMedica->historia_clase_pqr == "PETICION") echo 'selected' ?> value="PETICION">PETICION</option>
+                                            <option <?php if ($historiaMedica->historia_clase_pqr == "QUEJA") echo 'selected' ?> value="QUEJA">QUEJA</option>
+                                            <option <?php if ($historiaMedica->historia_clase_pqr == "RECLAMO") echo 'selected' ?> value="RECLAMO">RECLAMO</option>
+                                            <option <?php if ($historiaMedica->historia_clase_pqr == "DENUNCIA") echo 'selected' ?> value="DENUNCIA">DENUNCIA</option>
+                                            <option <?php if ($historiaMedica->historia_clase_pqr == "SUGERENCIA") echo 'selected' ?> value="SUGERENCIA">SUGERENCIA</option>
+                                            <option <?php if ($historiaMedica->historia_clase_pqr == "FELICITACION") echo 'selected' ?> value="FELICITACION">FELICITACION</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group col-md-4" style="display: block;">
+                                        <label for="canal">Canal receptor</label>
+
+                                        <select name="canal" id="canal" class="form-control">
+                                            <option <?php if ($historiaMedica->historia_canal == "CORREO_EMAIL") echo 'selected' ?> value="CORREO_EMAIL">CORREO ELECTRONICO</option>
+                                            <option <?php if ($historiaMedica->historia_canal == "CORREO_INTERNO") echo 'selected' ?> value="CORREO_INTERNO">CORREO INTERNO</option>
+                                            <option <?php if ($historiaMedica->historia_canal == "WEB") echo 'selected' ?> value="WEB">PAGINA WEB</option>
+                                            <option <?php if ($historiaMedica->historia_canal == "VENTANILLA") echo 'selected' ?> value="VENTANILLA">VENTANILLA UNICA</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Fila 2 --> 
+                                    <div class="form-group col-md-3" style="display: block;">
+                                        <label for="radicado_gestion">Radicado gestion documental</label>
+                                        <input onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_radicado_gestion; ?>" name="radicado_gestion" id="radicado_gestion" type="date" class="form-control" placeholder="">
+                                    </div>
+
+                                    <div class="form-group col-md-3" style="display: block;">
+                                        <label for="num_radicado_gestion">N° Rad.</label>
+                                        <input onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_num_radicado_gestion; ?>" name="num_radicado_gestion" id="num_radicado_gestion" type="number" class="form-control" placeholder="">
+                                    </div>
+
+                                    <div class="form-group col-md-3" style="display: block;">
+                                        <label for="radicado_planeacion">Radicado planeacion</label>
+                                        <input onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_radicado_planeacion; ?>" name="radicado_planeacion" id="radicado_planeacion" type="date" class="form-control" placeholder="">
+                                    </div>
+
+                                    <div class="form-group col-md-3" style="display: block;">
+                                        <label for="num_radicado_planeacion">N° Rad.</label>
+                                        <input onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_num_radicado_planeacion; ?>" name="num_radicado_planeacion" id="num_radicado_planeacion" type="number" class="form-control" placeholder="">
+                                    </div>
+
+                                    <!-- Fila 3 --> 
+                                    <div class="form-group col-md-6" style="display: block;">
+                                        <label for="area">Area a quien se le asigna</label>
+
+                                        <select name="area" id="area" class="form-control">
+                                            <option <?php if ($historiaMedica->historia_area == "POT") echo 'selected' ?> value="POT">POT</option>
+                                            <option <?php if ($historiaMedica->historia_area == "ESTRATIFICACION") echo 'selected' ?> value="ESTRATIFICACION">ESTRATIFICACION</option>
+                                            <option <?php if ($historiaMedica->historia_area == "NOMENCLATURA") echo 'selected' ?> value="NOMENCLATURA">NOMENCLATURA</option>
+                                            <option <?php if ($historiaMedica->historia_area == "SERVICIOS_PUBLICOS") echo 'selected' ?> value="SERVICIOS_PUBLICOS">SERVICIOS PUBLICOS</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group col-md-6" style="display: block;">
+                                        <label for="funcionario">Funcionario asignado</label>
+
+                                        <select name="funcionario" id="funcionario" class="form-control">
+                                            <option <?php if ($historiaMedica->historia_funcionario == "SANDRA_OSPINA") echo 'selected' ?> value="SANDRA_OSPINA">SANDRA OSPINA</option>
+                                            <option <?php if ($historiaMedica->historia_funcionario == "MARTHA_PATRICIA_TORRES") echo 'selected' ?> value="MARTHA_PATRICIA_TORRES">MARTHA PATRICIA TORRES</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                   <!-- TAB Tiempo y cierre -->
+                   <div class="tab-pane" id="tabContent3">
+                        <div class="">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <br><br>
+
+                                    <!-- Fila 1 --> 
+                                    <div class="form-group col-md-3" style="display: block;">
+                                        <label for="medio_respuesta">Medio de respuesta</label>
+
+                                        <select name="medio_respuesta" id="medio_respuesta" class="form-control">
+                                            <option <?php if ($historiaMedica->historia_medio_respuesta == "CORREO_EMAIL") echo 'selected' ?> value="CORREO_EMAIL">CORREO ELECTRONICO</option>
+                                            <option <?php if ($historiaMedica->historia_medio_respuesta == "OFICIO") echo 'selected' ?> value="OFICIO">OFICIO</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group col-md-3" style="display: block;">
+                                        <label for="fecha_respuesta">Fecha de respuesta</label>
+                                        <input onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_fecha_respuesta; ?>" name="fecha_respuesta" id="fecha_respuesta" type="date" class="form-control" placeholder="">
+                                    </div>
+
+                                    <div class="form-group col-md-6" style="display: block;">
+                                        <label for="num_oficio_respuesta">N° de oficio</label>
+                                        <input onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_num_oficio_respuesta; ?>" name="num_oficio_respuesta" id="num_oficio_respuesta" type="number" class="form-control" placeholder="">
+                                    </div>
+
+                                    <!-- Fila 2 --> 
+                                    <div class="form-group col-md-12" style="display: block;">
+                                        <label for="respuesta">Breve descripcion de la respuesta</label>
+                                        <input onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_respuesta; ?>" name="respuesta" id="respuesta" type="text" class="form-control" placeholder="">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
     
     <div class="form-group col-md-12 text-right" style="display: block;">
-        <button class="btn btn-success" name="btn-guardar" id="btn-guardar">Guardar cambios en la historia</button>
+        <br>
+        <button class="btn btn-success btn-block" name="btn-guardar" id="btn-guardar">Guardar cambios en la historia</button>
     </div>
 </form>
 

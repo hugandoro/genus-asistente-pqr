@@ -6,13 +6,32 @@ class Historia
 	
 	// Inicializa variables para campos que conforman la historia
 	public $historia_id;
+	public $historia_fecha;
+	public $historia_clasificacion_pqr;
 	public $historia_cedula;
 	public $historia_nombre_1; 
 	public $historia_nombre_2;
 	public $historia_apellido_1;
 	public $historia_apellido_2;
 	public $historia_direccion;
+	public $historia_entidad;
+	public $historia_cargo;
 	public $historia_telefono;
+	public $historia_email;
+	public $historia_tipo_usuario;
+	public $historia_clase_pqr;
+	public $historia_canal;
+	public $historia_radicado_gestion;
+	public $historia_num_radicado_gestion;
+	public $historia_radicado_planeacion;
+	public $historia_num_radicado_planeacion;
+	public $historia_area;
+	public $historia_funcionario;
+	public $historia_medio_respuesta;
+	public $historia_fecha_respuesta;
+	public $historia_num_oficio_respuesta;
+	public $historia_respuesta;
+
 
 	// Metodo para iniciar el constructor
 	public function __CONSTRUCT(){
@@ -74,27 +93,68 @@ class Historia
 	public function Actualizar($data){
 		try{
 			$data->historia_cedula == '' ? ($data->historia_cedula = 0) : $data->historia_cedula ;
-			
+
+			$data->historia_radicado_gestion == '' ? ($data->historia_radicado_gestion = NULL) : $data->historia_radicado_gestion ;
+			$data->historia_num_radicado_gestion == '' ? ($data->historia_num_radicado_gestion = '0') : $data->historia_num_radicado_gestion ;
+			$data->historia_radicado_planeacion == '' ? ($data->historia_radicado_planeacion = NULL) : $data->historia_radicado_planeacion ;
+			$data->historia_num_radicado_planeacion == '' ? ($data->historia_num_radicado_planeacion = '0') : $data->historia_num_radicado_planeacion ;
+			$data->historia_fecha_respuesta == '' ? ($data->historia_fecha_respuesta = NULL) : $data->historia_fecha_respuesta ;
+			$data->historia_num_oficio_respuesta == '' ? ($data->historia_num_oficio_respuesta = '0') : $data->historia_num_oficio_respuesta ;
+	
 			$sql = "UPDATE historia SET 
-						historia_cedula      	 = ?, 
-						historia_nombre_1        = ?, 
-						historia_nombre_2        = ?,
-                        historia_apellido_1      = ?,
-						historia_apellido_2      = ?,
-						historia_direccion       = ?, 
-						historia_telefono        = ?
+						historia_clasificacion_pqr			= ?,
+						historia_cedula      	 			= ?, 
+						historia_nombre_1        			= ?, 
+						historia_nombre_2        			= ?,
+                        historia_apellido_1      			= ?,
+						historia_apellido_2      			= ?,
+						historia_direccion       			= ?, 
+						historia_entidad		 			= ?, 
+						historia_cargo		 				= ?, 
+						historia_telefono        			= ?,
+						historia_email		 				= ?, 
+						historia_tipo_usuario	 			= ?, 
+						historia_clase_pqr	 				= ?, 
+						historia_canal		 				= ?, 
+						historia_radicado_gestion			= ?,
+						historia_num_radicado_gestion		= ?,
+						historia_radicado_planeacion		= ?,
+						historia_num_radicado_planeacion	= ?,
+						historia_area						= ?, 
+						historia_funcionario				= ?, 
+						historia_medio_respuesta			= ?, 
+						historia_fecha_respuesta			= ?, 
+						historia_num_oficio_respuesta		= ?,
+						historia_respuesta					= ?
 				    WHERE historia_id = ?";
 
 			$this->pdo->prepare($sql)
 			     ->execute(
 				    array(
+						$data->historia_clasificacion_pqr,
 						$data->historia_cedula, 
 						$data->historia_nombre_1, 
 						$data->historia_nombre_2,
                         $data->historia_apellido_1,
 						$data->historia_apellido_2,
 						$data->historia_direccion, 
+						$data->historia_entidad,
+						$data->historia_cargo,
 						$data->historia_telefono,
+						$data->historia_email,
+						$data->historia_tipo_usuario,
+						$data->historia_clase_pqr,
+						$data->historia_canal,
+						$data->historia_radicado_gestion,
+						$data->historia_num_radicado_gestion,
+						$data->historia_radicado_planeacion,
+						$data->historia_num_radicado_planeacion,
+						$data->historia_area,
+						$data->historia_funcionario,
+						$data->historia_medio_respuesta,
+						$data->historia_fecha_respuesta,
+						$data->historia_num_oficio_respuesta,
+						$data->historia_respuesta,
                         $data->historia_id //No se debe sobreescribir, se usa para ubicar el registro a modificar
 					)
 				);
@@ -121,19 +181,47 @@ class Historia
 	public function Registrar(Historia $data){
 		try{
 		$data->historia_cedula == '' ? ($data->historia_cedula = 0) : $data->historia_cedula ;
-		$sql = "INSERT INTO historia (historia_cedula,historia_nombre_1,historia_nombre_2,historia_apellido_1,historia_apellido_2,historia_direccion,historia_telefono) 
-		        VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+		$data->historia_radicado_gestion == '' ? ($data->historia_radicado_gestion = NULL) : $data->historia_radicado_gestion ;
+		$data->historia_num_radicado_gestion == '' ? ($data->historia_num_radicado_gestion = '0') : $data->historia_num_radicado_gestion ;
+		$data->historia_radicado_planeacion == '' ? ($data->historia_radicado_planeacion = NULL) : $data->historia_radicado_planeacion ;
+		$data->historia_num_radicado_planeacion == '' ? ($data->historia_num_radicado_planeacion = '0') : $data->historia_num_radicado_planeacion ;
+		$data->historia_fecha_respuesta == '' ? ($data->historia_fecha_respuesta = NULL) : $data->historia_fecha_respuesta ;
+		$data->historia_num_oficio_respuesta == '' ? ($data->historia_num_oficio_respuesta = '0') : $data->historia_num_oficio_respuesta ;
+
+		$sql = "INSERT INTO historia (historia_clasificacion_pqr,historia_cedula,historia_nombre_1,historia_nombre_2,historia_apellido_1,historia_apellido_2,
+		historia_direccion,historia_entidad,historia_cargo,historia_telefono,historia_email,historia_tipo_usuario,historia_clase_pqr,historia_canal,
+		historia_radicado_gestion,historia_num_radicado_gestion,historia_radicado_planeacion,historia_num_radicado_planeacion,historia_area,
+		historia_funcionario,historia_medio_respuesta,historia_fecha_respuesta,historia_num_oficio_respuesta,historia_respuesta) 
+		        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		$this->pdo->prepare($sql)
 		     ->execute(
 				array(
+					$data->historia_clasificacion_pqr,
 					$data->historia_cedula,
 					$data->historia_nombre_1, 
 					$data->historia_nombre_2,
 					$data->historia_apellido_1,
 					$data->historia_apellido_2,
 					$data->historia_direccion, 
-					$data->historia_telefono
+					$data->historia_entidad,
+					$data->historia_cargo,
+					$data->historia_telefono,
+					$data->historia_email,
+					$data->historia_tipo_usuario,
+					$data->historia_clase_pqr,
+					$data->historia_canal,
+					$data->historia_radicado_gestion,
+					$data->historia_num_radicado_gestion,
+					$data->historia_radicado_planeacion,
+					$data->historia_num_radicado_planeacion,
+					$data->historia_area,
+					$data->historia_funcionario,
+					$data->historia_medio_respuesta,
+					$data->historia_fecha_respuesta,
+					$data->historia_num_oficio_respuesta,
+					$data->historia_respuesta
                 )
 			);
 		} 
