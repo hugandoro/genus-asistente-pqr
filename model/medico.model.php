@@ -3,6 +3,11 @@ class Medico
 {
 	private $pdo;
 
+	//RANGO DE PERMISOS
+	//medico_nivel = 1 - ADMINISTRADOR permisos para crear, asignar, modificar y cerrar CUALQUIER PQR
+	//medico_nivel = 2 - USUARIO permisos solo para cerrar PQR a su cargo
+	//****************/
+
 	public function __CONSTRUCT(){
 		try{
 			$this->pdo = Database::StartUp();     

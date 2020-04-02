@@ -19,7 +19,11 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Asistente de PQR <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="?c=Historia&a=crud&token=<?php echo @$_GET['token']; ?>">Crear PQR</a></li>
+            
+            <?php if ($this->auth->usuario()->medico_nivel == '1') { ?>                                        
+              <li><a href="?c=Historia&a=crud&token=<?php echo @$_GET['token']; ?>">Crear PQR</a></li>
+            <?php }?>
+
             <li role="separator" class="divider"></li>
             <li><a href="?c=Historia&a=listar&token=<?php echo @$_GET['token']; ?>">Listar PQR</a></li>
           </ul>

@@ -32,7 +32,6 @@ class Historia
 	public $historia_num_oficio_respuesta;
 	public $historia_respuesta;
 
-
 	// Metodo para iniciar el constructor
 	public function __CONSTRUCT(){
 		try{
@@ -44,10 +43,15 @@ class Historia
 	}
 
 	// Metodo para listar resultados de una consulta de historias CON FILTRO COMODIN
-	public function Listar(){
+	public function Listar($usuario,$nivel){
 		try{
 			$result = array();
-			$stm = $this->pdo->prepare("SELECT * FROM historia");	
+
+			if ($nivel=='1') //ADMINISTRADOR - Consulta TODOS los registros
+				$stm = $this->pdo->prepare("SELECT * FROM historia");	
+			else // USUARIO - Consulta SOLO los registros a cargo
+				$stm = $this->pdo->prepare("SELECT * FROM historia WHERE historia_funcionario = '$usuario'");	
+
 			$stm->execute();
 
 			return $stm->fetchAll(PDO::FETCH_OBJ);
@@ -230,5 +234,30 @@ class Historia
 		}
 
 		return $this->pdo->lastInsertId(); //Retorna el ID (Autoincremental) del registro que se acaba de crear
+	}
+
+	// Metodo para calcular dias habiles
+	function sumasDiaSemana($fecha,$dias)
+	{
+		$datestart= strtotime($fecha);
+		$datesuma = 15 * 86400;
+		$diasemana = date('N',$datestart);
+		$totaldias = $diasemana+$dias;
+		$findesemana = intval( $totaldias/5) *2 ; 
+		$diasabado = $totaldias % 5 ; 
+		if ($diasabado==6) $findesemana++;
+		if ($diasabado==0) $findesemana=$findesemana-2;
+	
+		$total = (($dias+$findesemana) * 86400)+$datestart ; 
+		return $fechafinal = date('Y-m-d', $total);
+	}
+
+	// Metodo para diferencia de dias
+	function diasPasados($fecha_inicial,$fecha_final)
+	{
+		$dias = (strtotime($fecha_inicial)-strtotime($fecha_final))/86400;
+		//$dias = abs($dias); 
+		$dias = floor($dias);
+		return $dias;
 	}
 }
