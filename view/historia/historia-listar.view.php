@@ -6,14 +6,14 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>Codigo</th>
-            <th>1er Nombre</th>
-            <th>1er Apellido</th>
+            <th>Cod</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
             <th>Clase</th>
             <th>Clasificacion</th>
             <th>Estado</th>
-            <th>Fecha radicado</th>
-            <th>Fecha vencimiento</th>
+            <th>Radicado gestion</th>
+            <th>Vencimiento</th>
             <th>Dias</th>
             <th>Estado</th>
             <th style="width:20px;"></th>

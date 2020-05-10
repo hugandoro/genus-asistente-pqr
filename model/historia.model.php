@@ -48,9 +48,9 @@ class Historia
 			$result = array();
 
 			if ($nivel=='1') //ADMINISTRADOR - Consulta TODOS los registros
-				$stm = $this->pdo->prepare("SELECT * FROM historia");	
+				$stm = $this->pdo->prepare("SELECT * FROM historia ORDER BY historia_radicado_gestion DESC");	
 			else // USUARIO - Consulta SOLO los registros a cargo
-				$stm = $this->pdo->prepare("SELECT * FROM historia WHERE historia_funcionario = '$usuario'");	
+				$stm = $this->pdo->prepare("SELECT * FROM historia WHERE historia_funcionario = '$usuario' ORDER BY historia_radicado_gestion DESC");	
 
 			$stm->execute();
 

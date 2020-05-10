@@ -1,15 +1,18 @@
 <?php
 require_once 'model/historia.model.php';
+require_once 'model/medico.model.php';
 error_reporting(E_ALL ^ E_NOTICE);
 
 class HistoriaController{
     
     private $modelHistoria,
-            $auth;
+            $auth,
+            $modelMedico;
     
     // Metodo constructor de la clase
     public function __CONSTRUCT(){
         $this->modelHistoria = new Historia();
+        $this->modelMedico = new Medico();
         $this->auth  = FactoryAuth::getInstance();
         
         // Hace un llamado al metodo estaAutenticado para validar si es una sesion registrada
@@ -33,11 +36,13 @@ class HistoriaController{
     // Metodo que permite hacer CRUD con la base de datos
     public function Crud(){
         $historiaMedica = new Historia();
+        $usuarios = new Medico(); 
         
         // Valida si se recibe un ID - si existe es modo edicion y hace un llamado a obtener los datos del modelo
         if(isset($_REQUEST['id'])){
             $historiaMedica = $this->modelHistoria->Obtener($_REQUEST['id']); 
         }
+        $usuarios = $this->modelMedico->listarUsuarios();
         
         //Carga las vistas para presentar al usuario
         require_once 'view/header.view.php';

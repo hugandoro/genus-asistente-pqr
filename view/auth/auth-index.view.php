@@ -1,10 +1,12 @@
 <!-- Vista para pantalla de login --> 
-<h1 class="page-header" align="Center">Asistente virtual de seguimiento a PQR</h1>
+<h1 class="page-header" align="Center">Asistente virtual - Seguimiento radicados PQR</h1>
 
 <div class="row">
-    <div class="col-sm-4"></div>
-    <div class="col-sm-4">
-
+    <div class="col-sm-2"></div>
+    <div class="col-sm-3">
+        <center><picture><img src="assets/img/asistente.png" class="img-fluid" width="230px"></picture></center>
+    </div>
+    <div class="col-sm-5">
         <!-- El form de logueo hace un llamado al controlador Auth con la accion/metodo Autenticar --> 
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -19,7 +21,6 @@
                 </form>
             </div>
           </div>
-
-        
     </div>
+    <div class="col-sm-2"></div>
 </div>

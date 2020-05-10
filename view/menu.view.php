@@ -8,26 +8,18 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="?c=Historia&token=<?php echo @$_GET['token']; ?>">ASISTENTE - SECRETARIA DE PLANEACION</a>
+      <a class="navbar-brand" href="?c=Historia&token=<?php echo @$_GET['token']; ?>">Secretaria de Planeacion Dosquebradas</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <!-- <li class="active"><a href="#">Historias clinicas <span class="sr-only">(current)</span></a></li> -->
-        <!-- <li><a href="#">Consultas medicas</a></li> -->
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Asistente de PQR <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            
-            <?php if ($this->auth->usuario()->medico_nivel == '1') { ?>                                        
-              <li><a href="?c=Historia&a=crud&token=<?php echo @$_GET['token']; ?>">Crear PQR</a></li>
-            <?php }?>
 
-            <li role="separator" class="divider"></li>
-            <li><a href="?c=Historia&a=listar&token=<?php echo @$_GET['token']; ?>">Listar PQR</a></li>
-          </ul>
-        </li>
+        <?php if ($this->auth->usuario()->medico_nivel == '1') { ?>                                        
+          <li><a href="?c=Historia&a=crud&token=<?php echo @$_GET['token']; ?>">Ingresar una PQR</a></li>
+        <?php }?>
+
+        <li><a href="?c=Historia&a=listar&token=<?php echo @$_GET['token']; ?>">Listar registros PQR</a></li>
 
       </ul>
 

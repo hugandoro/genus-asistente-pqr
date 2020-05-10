@@ -39,4 +39,18 @@ class Medico
 			die($e->getMessage());
 		}
 	}
+
+	// Metodo para listar todos los usuarios
+	public function listarUsuarios(){
+		try{
+			$result = array();
+			$stm = $this->pdo->prepare("SELECT * FROM medico ORDER BY medico_nombres");	
+			$stm->execute();
+
+			return $stm->fetchAll(PDO::FETCH_OBJ);
+		}
+		catch(Exception $e){
+			die($e->getMessage());
+		}
+	}
 }

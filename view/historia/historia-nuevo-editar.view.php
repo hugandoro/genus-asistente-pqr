@@ -232,15 +232,18 @@
                                         <label for="funcionario">Funcionario asignado</label>
 
                                         <?php if ($this->auth->usuario()->medico_nivel == '2') { ?>
-                                            <input readonly value="<?php echo $historiaMedica->historia_funcionario; ?>" name="funcionario" id="funcionario" class="form-control">
+                                            <!-- El input oculto 'Hidden' carga el codigo y vuelve y lo envia al guardar -->
+                                            <input type="hidden" value="<?php echo $historiaMedica->historia_funcionario; ?>" name="funcionario" id="funcionario" class="form-control">
+                                            <!-- El input visible solo muestra el nombre del usuario pero NO se utiliza para ser guardado, 
+                                            se asume que si el usuario esta viendo este registro el nombre corresponde al obtenido mediante Auth-->
+                                            <input readonly value="<?php echo $this->auth->usuario()->medico_nombres; ?> <?php echo $this->auth->usuario()->medico_apellidos; ?>" name="funcionarioVisible" id="funcionarioVisible" class="form-control">
                                         <?php }?>
 
                                         <?php if ($this->auth->usuario()->medico_nivel == '1') { ?>                                                                                                       
                                             <select name="funcionario" id="funcionario" class="form-control">
-                                                <option <?php if ($historiaMedica->historia_funcionario == "32711993") echo 'selected' ?> value="32711993">ADRIANA RUIZ</option>
-                                                <option <?php if ($historiaMedica->historia_funcionario == "32711994") echo 'selected' ?> value="32711994">CLAUDIA SANCHEZ</option>
-                                                <option <?php if ($historiaMedica->historia_funcionario == "32711995") echo 'selected' ?> value="32711995">MARTHA PATRICIA TORRES</option>
-                                                <option <?php if ($historiaMedica->historia_funcionario == "32711992") echo 'selected' ?> value="32711992">SANDRA OSPINA</option>
+                                                <?php foreach($this->modelMedico->listarUsuarios() as $r): ?>
+                                                    <option <?php if ($historiaMedica->historia_funcionario == $r->medico_id) echo 'selected' ?> value=<?php echo $r->medico_id; ?>><?php echo $r->medico_nombres; ?> <?php echo $r->medico_apellidos; ?></option>
+                                                <?php endforeach; ?>
                                             </select>
                                         <?php }?>
                                     </div>
