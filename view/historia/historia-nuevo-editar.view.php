@@ -221,9 +221,8 @@
                                         <?php if ($this->auth->usuario()->medico_nivel == '1') { ?>                                        
                                             <select name="area" id="area" class="form-control">
                                                 <option <?php if ($historiaMedica->historia_area == "POT") echo 'selected' ?> value="POT">POT</option>
-                                                <option <?php if ($historiaMedica->historia_area == "ESTRATIFICACION") echo 'selected' ?> value="ESTRATIFICACION">ESTRATIFICACION</option>
-                                                <option <?php if ($historiaMedica->historia_area == "NOMENCLATURA") echo 'selected' ?> value="NOMENCLATURA">NOMENCLATURA</option>
-                                                <option <?php if ($historiaMedica->historia_area == "SERVICIOS_PUBLICOS") echo 'selected' ?> value="SERVICIOS_PUBLICOS">SERVICIOS PUBLICOS</option>
+                                                <option <?php if ($historiaMedica->historia_area == "SOCIOECONOMICA") echo 'selected' ?> value="SOCIOECONOMICA">SOCIOECONOMICA</option>
+                                                <option <?php if ($historiaMedica->historia_area == "CALIDAD") echo 'selected' ?> value="CALIDAD">CALIDAD</option>
                                             </select>
                                         <?php }?>
                                     </div>
