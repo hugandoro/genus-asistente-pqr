@@ -28,10 +28,8 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             <?php echo $this->auth->usuario()->medico_nombres ." ". $this->auth->usuario()->medico_apellidos; ?> <span class="caret"></span>
           </a>
-          <ul class="dropdown-menu">
-            <li><a href="?c=auth&a=desconectarse">Desconectarse</a></li>
-          </ul>
         </li>
+        <li><a href="?c=auth&a=desconectarse">Desconectarse</a></li>
       </ul>
 
     </div><!-- /.navbar-collapse -->
