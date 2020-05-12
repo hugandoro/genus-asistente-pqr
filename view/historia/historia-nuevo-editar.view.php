@@ -31,12 +31,12 @@
                                     <?php if ($this->auth->usuario()->medico_nivel == '2') $aux = 'readonly '; else $aux = ''; ?>
 
                                     <!-- Fila 1 -->
-                                    <div class="form-group col-md-2" style="display: block;">
+                                    <div class="form-group col-md-1" style="display: block;">
                                         <label for="fecha">ID PQR</label>
                                         <input onblur="Mayuscula(this);" readonly value="<?php echo $historiaMedica->historia_id; ?>" name="id" id="id" type="text" class="form-control" placeholder="N° automatico...">
                                     </div>
 
-                                    <div class="form-group col-md-8" style="display: block;">
+                                    <div class="form-group col-md-6" style="display: block;">
                                         <label for="clasificacion_pqr">Clasificacion de la PQR</label>
 
                                         <?php if ($this->auth->usuario()->medico_nivel == '2') { ?>
@@ -45,45 +45,62 @@
 
                                         <?php if ($this->auth->usuario()->medico_nivel == '1') { ?>
                                             <select name="clasificacion_pqr" id="clasificacion_pqr" class="form-control">                                                                                       
-                                                <option <?php if ($historiaMedica->historia_clasificacion_pqr == "CONCEPTO") echo 'selected' ?> value="CONCEPTO">CONCEPTOS SOBRE TRASLADOS DE POSTE - 30 dias</option>
-                                                <option <?php if ($historiaMedica->historia_clasificacion_pqr == "LICENCIA") echo 'selected' ?> value="LICENCIA">LICENCIAS DE INTERVENCIÓN Y OCUPACIÓN DE ESPACIO PÚBLICO - 45 dias</option>
-                                                <option <?php if ($historiaMedica->historia_clasificacion_pqr == "ORGANO_CONTROL") echo 'selected' ?> value="ORGANO_CONTROL">ÓRGANOS DE CONTROL, POLÍTICO, DISCIPLINARIO, FISCAL, JURISDICCIONAL, CIUDADANO - 5 dias</option>
-                                                <option <?php if ($historiaMedica->historia_clasificacion_pqr == "PETICION_AUTORIDAD") echo 'selected' ?> value="PETICION_AUTORIDAD">PETICIONES ENTRE AUTORIDADES - 10 dias</option>
-                                                <option <?php if ($historiaMedica->historia_clasificacion_pqr == "PETICION_INFORMACION") echo 'selected' ?> value="PETICION_INFORMACION">PETICIONES DE INFORMACIÓN Y DOCUMENTOS - 10 dias</option>
-                                                <option <?php if ($historiaMedica->historia_clasificacion_pqr == "PETICION_GENERAL") echo 'selected' ?> value="PETICION_GENERAL">PETICIONES DE INTERÉS GENERAL O PARTICULAR - 15 dias</option>
-                                                <option <?php if ($historiaMedica->historia_clasificacion_pqr == "PETICION_CONSULTA") echo 'selected' ?> value="PETICION_CONSULTA">PETICIONES DE CONSULTA - 30 dias</option>
-                                                <option <?php if ($historiaMedica->historia_clasificacion_pqr == "QUEJA") echo 'selected' ?> value="QUEJA">QUEJAS, RECLAMOS Y MANIFESTACIONES - 15 dias</option>                           
+                                                <option <?php if ($historiaMedica->historia_clasificacion_pqr == "CONCEPTO") echo 'selected' ?> value="CONCEPTO">Concepto sobre traslado de poste - 30 dias</option>
+                                                <option <?php if ($historiaMedica->historia_clasificacion_pqr == "LICENCIA") echo 'selected' ?> value="LICENCIA">Licencia de intervención y ocupación de espacio público - 45 dias</option>
+                                                <option <?php if ($historiaMedica->historia_clasificacion_pqr == "ORGANO_CONTROL") echo 'selected' ?> value="ORGANO_CONTROL">Órgano de control, pólitico, disciplinario, fiscal, jurisdiccional, ciudadano - 5 dias</option>
+                                                <option <?php if ($historiaMedica->historia_clasificacion_pqr == "PETICION_AUTORIDAD") echo 'selected' ?> value="PETICION_AUTORIDAD">Petición entre autoridades - 10 dias</option>
+                                                <option <?php if ($historiaMedica->historia_clasificacion_pqr == "PETICION_INFORMACION") echo 'selected' ?> value="PETICION_INFORMACION">Petición de información y documentos - 10 dias</option>
+                                                <option <?php if ($historiaMedica->historia_clasificacion_pqr == "PETICION_GENERAL") echo 'selected' ?> value="PETICION_GENERAL">Petición de interese general o particular - 15 dias</option>
+                                                <option <?php if ($historiaMedica->historia_clasificacion_pqr == "PETICION_CONSULTA") echo 'selected' ?> value="PETICION_CONSULTA">Petición de consulta - 30 dias</option>
+                                                <option <?php if ($historiaMedica->historia_clasificacion_pqr == "QUEJA") echo 'selected' ?> value="QUEJA">Queja, reclamo y manifestación - 15 dias</option>  
+                                                <option <?php if ($historiaMedica->historia_clasificacion_pqr == "TUTELA") echo 'selected' ?> value="TUTELA">Tutela - 2 dias</option>                                                    
                                             </select>
                                         <?php }?>
                                     </div>
 
+                                    <div class="form-group col-md-5" style="display: block;">
+                                        <img src='assets/img/alarma.png' width=20px title='Semaforo PQR'><label for="dias">&nbsp;&nbsp;Dias Habiles (Dejar en blanco para valores predefinidos)</label>
+                                        <input <?php echo $aux; ?> onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_dias; ?>" name="dias" id="dias" type="number" class="form-control" placeholder="Dejar en blanco para valores predefinidos...">
+                                    </div>
+
+                                    <!-- Fila 2 -->
+                                    <div class="form-group col-md-12" style="display: block;">
+                                        <label for="asunto">Asunto - Descripción breve</label>
+                                        <input <?php echo $aux; ?> onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_asunto; ?>" name="asunto" id="asunto" type="text" class="form-control" placeholder="">
+                                    </div>
+
+                                    <!-- Fila 3 -->
                                     <div class="form-group col-md-2" style="display: block;">
                                         <label for="cedula">Cedula / Nit</label>
                                         <input <?php echo $aux; ?> onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_cedula; ?>" name="cedula" id="cedula" type="number" class="form-control" placeholder="Solo numeros sin puntos o comas">
                                     </div>
 
-                                    <!-- Fila 2 -->
-                                    <div class="form-group col-md-3" style="display: block;">
+                                    <div class="form-group col-md-2" style="display: block;">
                                         <label for="nombre_1">Primer nombre</label>
                                         <input <?php echo $aux; ?> onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_nombre_1; ?>" name="nombre_1" id="nombre_1" type="text" class="form-control" placeholder="" >
                                     </div>
 
-                                    <div class="form-group col-md-3" style="display: block;">
+                                    <div class="form-group col-md-2" style="display: block;">
                                         <label for="nombre_2">Segundo nombre</label>
                                         <input <?php echo $aux; ?> onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_nombre_2; ?>" name="nombre_2" id="nombre_2" type="text" class="form-control" placeholder="">
                                     </div>
 
-                                    <div class="form-group col-md-3" style="display: block;">
+                                    <div class="form-group col-md-2" style="display: block;">
                                         <label for="apellido_1">Primer apellido</label>
                                         <input <?php echo $aux; ?> onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_apellido_1; ?>" name="apellido_1" id="apellido_1" type="text" class="form-control" placeholder="">
                                     </div>
 
-                                    <div class="form-group col-md-3" style="display: block;">
+                                    <div class="form-group col-md-2" style="display: block;">
                                         <label for="apellido_2">Segundo apellido</label>
                                         <input <?php echo $aux; ?> onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_apellido_2; ?>" name="apellido_2" id="apellido_2" type="text" class="form-control" placeholder="">
                                     </div>
     
-                                    <!-- Fila 3 -->                                        
+                                    <div class="form-group col-md-2" style="display: block;">
+                                        <label for="telefono">Telefono</label>
+                                        <input <?php echo $aux; ?> onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_telefono; ?>" name="telefono" id="telefono" type="number" class="form-control" placeholder="">
+                                    </div>
+
+                                    <!-- Fila 4 -->                                        
                                     <div class="form-group col-md-3" style="display: block;">
                                         <label for="direccion">Direccion</label>
                                         <input <?php echo $aux; ?> onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_direccion; ?>" name="direccion" id="direccion" type="text" class="form-control" placeholder="">
@@ -94,7 +111,7 @@
                                         <input <?php echo $aux; ?> onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_entidad; ?>" name="entidad" id="entidad" type="text" class="form-control" placeholder="">
                                     </div>
 
-                                    <div class="form-group col-md-6" style="display: block;">
+                                    <div class="form-group col-md-3" style="display: block;">
                                         <label for="cargo">Cargo/Funcion</label>
 
                                         <?php if ($this->auth->usuario()->medico_nivel == '2') { ?>
@@ -115,13 +132,7 @@
                                         <?php }?>
                                     </div>
 
-                                    <!-- Fila 4 --> 
-                                    <div class="form-group col-md-6" style="display: block;">
-                                        <label for="telefono">Telefono</label>
-                                        <input <?php echo $aux; ?> onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_telefono; ?>" name="telefono" id="telefono" type="number" class="form-control" placeholder="">
-                                    </div>
-
-                                    <div class="form-group col-md-6" style="display: block;">
+                                    <div class="form-group col-md-3" style="display: block;">
                                         <label for="email">Email</label>
                                         <input <?php echo $aux; ?> onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_email; ?>" name="email" id="email" type="email" class="form-control" placeholder="">
                                     </div>
@@ -169,7 +180,7 @@
                                                 <option <?php if ($historiaMedica->historia_clase_pqr == "SUGERENCIA") echo 'selected' ?> value="SUGERENCIA">SUGERENCIA</option>
                                                 <option <?php if ($historiaMedica->historia_clase_pqr == "FELICITACION") echo 'selected' ?> value="FELICITACION">FELICITACION</option>
                                             </select>
-                                        <?php }?>
+                                        <?php }?>                                        
                                     </div>
 
                                     <div class="form-group col-md-4" style="display: block;">
@@ -220,9 +231,9 @@
 
                                         <?php if ($this->auth->usuario()->medico_nivel == '1') { ?>                                        
                                             <select name="area" id="area" class="form-control">
-                                                <option <?php if ($historiaMedica->historia_area == "POT") echo 'selected' ?> value="POT">POT</option>
-                                                <option <?php if ($historiaMedica->historia_area == "SOCIOECONOMICA") echo 'selected' ?> value="SOCIOECONOMICA">SOCIOECONOMICA</option>
-                                                <option <?php if ($historiaMedica->historia_area == "CALIDAD") echo 'selected' ?> value="CALIDAD">CALIDAD</option>
+                                                <option <?php if ($historiaMedica->historia_area == "POT") echo 'selected' ?> value="POT">Direccion de Ordenamiento Territorial</option>
+                                                <option <?php if ($historiaMedica->historia_area == "CALIDAD") echo 'selected' ?> value="CALIDAD">Direccion de Sistemas de Gestion</option>
+                                                <option <?php if ($historiaMedica->historia_area == "SOCIOECONOMICA") echo 'selected' ?> value="SOCIOECONOMICA">Direccion de Asuntos Socioeconomicos</option>
                                             </select>
                                         <?php }?>
                                     </div>
@@ -283,14 +294,7 @@
                                         <label for="estado_respuesta">Estado de la respuesta</label><br>
                                         <!-- Calculo fecha de vencimiento -->
                                         <?php
-                                            if ($historiaMedica->historia_clasificacion_pqr == 'CONCEPTO') $sumarDias = 30;
-                                            if ($historiaMedica->historia_clasificacion_pqr == 'LICENCIA') $sumarDias = 45;
-                                            if ($historiaMedica->historia_clasificacion_pqr == 'ORGANO_CONTROL') $sumarDias = 5;
-                                            if ($historiaMedica->historia_clasificacion_pqr == 'PETICION_AUTORIDAD') $sumarDias = 10;
-                                            if ($historiaMedica->historia_clasificacion_pqr == 'PETICION_INFORMACION') $sumarDias = 10;
-                                            if ($historiaMedica->historia_clasificacion_pqr == 'PETICION_GENERAL') $sumarDias = 15;
-                                            if ($historiaMedica->historia_clasificacion_pqr == 'PETICION_CONSULTA') $sumarDias = 30;
-                                            if ($historiaMedica->historia_clasificacion_pqr == 'QUEJA') $sumarDias = 15;
+                                            $sumarDias = $historiaMedica->historia_dias; //Dias que se establecieron como plazo para responder
                                             $fechaVencimiento = $this->modelHistoria->sumasDiaSemana($historiaMedica->historia_radicado_gestion,$sumarDias);
 
                                             $fechaRespuesta = $historiaMedica->historia_fecha_respuesta;

@@ -10,12 +10,11 @@
             <th>Nombre</th>
             <th>Apellido</th>
             <th>Clase</th>
-            <th>Clasificacion</th>
             <th>Estado</th>
             <th>Radicado gestion</th>
             <th>Vencimiento</th>
-            <th>Dias</th>
-            <th>Estado</th>
+            <th>Dias para vencer</th>
+            <th></th>
             <th style="width:20px;"></th>
             <th style="width:20px;"></th>
         </tr>
@@ -25,14 +24,7 @@
 
         <!-- Calculo fecha de vencimiento -->
         <?php
-            if ($r->historia_clasificacion_pqr == 'CONCEPTO') $sumarDias = 30;
-            if ($r->historia_clasificacion_pqr == 'LICENCIA') $sumarDias = 45;
-            if ($r->historia_clasificacion_pqr == 'ORGANO_CONTROL') $sumarDias = 5;
-            if ($r->historia_clasificacion_pqr == 'PETICION_AUTORIDAD') $sumarDias = 10;
-            if ($r->historia_clasificacion_pqr == 'PETICION_INFORMACION') $sumarDias = 10;
-            if ($r->historia_clasificacion_pqr == 'PETICION_GENERAL') $sumarDias = 15;
-            if ($r->historia_clasificacion_pqr == 'PETICION_CONSULTA') $sumarDias = 30;
-            if ($r->historia_clasificacion_pqr == 'QUEJA') $sumarDias = 15;
+            $sumarDias = $r->historia_dias; //Dias que se establecieron como plazo para responder
             $fechaVencimiento = $this->modelHistoria->sumasDiaSemana($r->historia_radicado_gestion,$sumarDias);
 
             $fechaActual= date("Y/m/d");
@@ -50,7 +42,6 @@
             <td><?php echo $r->historia_nombre_1; ?></td>
             <td><?php echo $r->historia_apellido_1; ?></td>
             <td><?php echo $r->historia_clase_pqr; ?></td>
-            <td><?php echo $r->historia_clasificacion_pqr; ?></td>
             <td><?php if($r->historia_fecha_respuesta == NULL) echo "Abierta"; else echo "Cerrada" ?></td>
             <td><?php echo $r->historia_radicado_gestion; ?></td>
             <td><?php echo $fechaVencimiento; ?></td>
@@ -64,7 +55,7 @@
                 <a href="?c=Historia&a=Crud&id=<?php echo $r->historia_id; ?>&token=<?php echo @$_GET['token']; ?>"><img src="assets/img/abrir.png" width=16px title="Abrir historia"></a>
             </td>
             <td>
-                <a onclick="javascript:return confirm('¿Seguro de eliminar esta historia ? tenga presente que con esta accion tambien seran eliminadas las citas relacionadas con la historia medica...');" href="?c=Historia&a=Eliminar&id=<?php echo $r->historia_id; ?>&filtro=<?php echo $_REQUEST['filtro']; ?>&token=<?php echo @$_GET['token']; ?>"><img src="assets/img/eliminar.png" width=16px title="Eliminar historia"></a>
+                <a onclick="javascript:return confirm('¿ Seguro de eliminar este registro ? Esta accion es irreversible...');" href="?c=Historia&a=Eliminar&id=<?php echo $r->historia_id; ?>&filtro=<?php echo $_REQUEST['filtro']; ?>&token=<?php echo @$_GET['token']; ?>"><img src="assets/img/eliminar.png" width=16px title="Eliminar historia"></a>
             </td>
         </tr>
     <?php endforeach; ?>

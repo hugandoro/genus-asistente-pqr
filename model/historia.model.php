@@ -8,6 +8,8 @@ class Historia
 	public $historia_id;
 	public $historia_fecha;
 	public $historia_clasificacion_pqr;
+	public $historia_dias;
+	public $historia_asunto;
 	public $historia_cedula;
 	public $historia_nombre_1; 
 	public $historia_nombre_2;
@@ -104,9 +106,23 @@ class Historia
 			$data->historia_num_radicado_planeacion == '' ? ($data->historia_num_radicado_planeacion = '0') : $data->historia_num_radicado_planeacion ;
 			$data->historia_fecha_respuesta == '' ? ($data->historia_fecha_respuesta = NULL) : $data->historia_fecha_respuesta ;
 			$data->historia_num_oficio_respuesta == '' ? ($data->historia_num_oficio_respuesta = '0') : $data->historia_num_oficio_respuesta ;
-	
+			
+			if ($data->historia_dias == ''){
+				if ($data->historia_clasificacion_pqr == "CONCEPTO") $data->historia_dias = '30';
+				if ($data->historia_clasificacion_pqr == "LICENCIA") $data->historia_dias = '45';
+				if ($data->historia_clasificacion_pqr == "ORGANO_CONTROL") $data->historia_dias = '5';
+				if ($data->historia_clasificacion_pqr == "PETICION_AUTORIDAD") $data->historia_dias = '10';
+				if ($data->historia_clasificacion_pqr == "PETICION_INFORMACION") $data->historia_dias = '10';
+				if ($data->historia_clasificacion_pqr == "PETICION_GENERAL") $data->historia_dias = '15';
+				if ($data->historia_clasificacion_pqr == "PETICION_CONSULTA") $data->historia_dias = '30';
+				if ($data->historia_clasificacion_pqr == "QUEJA") $data->historia_dias = '15';
+				if ($data->historia_clasificacion_pqr == "TUTELA") $data->historia_dias = '2';
+			}
+
 			$sql = "UPDATE historia SET 
 						historia_clasificacion_pqr			= ?,
+						historia_dias     	 				= ?,
+						historia_asunto						= ?,
 						historia_cedula      	 			= ?, 
 						historia_nombre_1        			= ?, 
 						historia_nombre_2        			= ?,
@@ -136,6 +152,8 @@ class Historia
 			     ->execute(
 				    array(
 						$data->historia_clasificacion_pqr,
+						$data->historia_dias,
+						$data->historia_asunto,
 						$data->historia_cedula, 
 						$data->historia_nombre_1, 
 						$data->historia_nombre_2,
@@ -193,16 +211,30 @@ class Historia
 		$data->historia_fecha_respuesta == '' ? ($data->historia_fecha_respuesta = NULL) : $data->historia_fecha_respuesta ;
 		$data->historia_num_oficio_respuesta == '' ? ($data->historia_num_oficio_respuesta = '0') : $data->historia_num_oficio_respuesta ;
 
-		$sql = "INSERT INTO historia (historia_clasificacion_pqr,historia_cedula,historia_nombre_1,historia_nombre_2,historia_apellido_1,historia_apellido_2,
+		if ($data->historia_dias == ''){
+			if ($data->historia_clasificacion_pqr == "CONCEPTO") $data->historia_dias = '30';
+			if ($data->historia_clasificacion_pqr == "LICENCIA") $data->historia_dias = '45';
+			if ($data->historia_clasificacion_pqr == "ORGANO_CONTROL") $data->historia_dias = '5';
+			if ($data->historia_clasificacion_pqr == "PETICION_AUTORIDAD") $data->historia_dias = '10';
+			if ($data->historia_clasificacion_pqr == "PETICION_INFORMACION") $data->historia_dias = '10';
+			if ($data->historia_clasificacion_pqr == "PETICION_GENERAL") $data->historia_dias = '15';
+			if ($data->historia_clasificacion_pqr == "PETICION_CONSULTA") $data->historia_dias = '30';
+			if ($data->historia_clasificacion_pqr == "QUEJA") $data->historia_dias = '15';
+			if ($data->historia_clasificacion_pqr == "TUTELA") $data->historia_dias = '2';
+		}
+
+		$sql = "INSERT INTO historia (historia_clasificacion_pqr,historia_dias,historia_asunto,historia_cedula,historia_nombre_1,historia_nombre_2,historia_apellido_1,historia_apellido_2,
 		historia_direccion,historia_entidad,historia_cargo,historia_telefono,historia_email,historia_tipo_usuario,historia_clase_pqr,historia_canal,
 		historia_radicado_gestion,historia_num_radicado_gestion,historia_radicado_planeacion,historia_num_radicado_planeacion,historia_area,
 		historia_funcionario,historia_medio_respuesta,historia_fecha_respuesta,historia_num_oficio_respuesta,historia_respuesta) 
-		        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		$this->pdo->prepare($sql)
 		     ->execute(
 				array(
 					$data->historia_clasificacion_pqr,
+					$data->historia_dias,
+					$data->historia_asunto,
 					$data->historia_cedula,
 					$data->historia_nombre_1, 
 					$data->historia_nombre_2,

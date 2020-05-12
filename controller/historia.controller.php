@@ -69,6 +69,8 @@ class HistoriaController{
         $historiaMedica->historia_id = $_REQUEST['id'];
         $historiaMedica->historia_fecha = $_REQUEST['fecha'];
         $historiaMedica->historia_clasificacion_pqr = $_REQUEST['clasificacion_pqr'];
+        $historiaMedica->historia_dias = $_REQUEST['dias'];
+        $historiaMedica->historia_asunto = $_REQUEST['asunto'];
         $historiaMedica->historia_cedula = $_REQUEST['cedula'];
         $historiaMedica->historia_nombre_1 = $_REQUEST['nombre_1'];
         $historiaMedica->historia_nombre_2 = $_REQUEST['nombre_2'];
