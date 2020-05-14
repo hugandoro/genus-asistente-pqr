@@ -14,6 +14,7 @@
             <th>Radicado gestion</th>
             <th>Vencimiento</th>
             <th>Dias para vencer</th>
+            <th>Funcionario</th>
             <th></th>
             <th style="width:20px;"></th>
             <th style="width:20px;"></th>
@@ -45,7 +46,8 @@
             <td><?php if($r->historia_fecha_respuesta == NULL) echo "Abierta"; else echo "Cerrada" ?></td>
             <td><?php echo $r->historia_radicado_gestion; ?></td>
             <td><?php echo $fechaVencimiento; ?></td>
-            <td><?php if($r->historia_fecha_respuesta == NULL) echo $diasRestantes; else echo "-" ?></td></td>
+            <td><?php if($r->historia_fecha_respuesta == NULL) echo $diasRestantes; else echo "-" ?></td>
+            <td><?php echo $r->medico_nombres; ?> <?php echo $r->medico_apellidos; ?></td>
 
             <td>
                 <?php if($r->historia_fecha_respuesta == NULL) echo "<img src='$imagenSemaforo' width=16px title='Semaforo PQR'>" ; else echo "-" ?>

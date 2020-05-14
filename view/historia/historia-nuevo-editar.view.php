@@ -192,9 +192,10 @@
 
                                         <?php if ($this->auth->usuario()->medico_nivel == '1') { ?>                                        
                                             <select name="canal" id="canal" class="form-control">
-                                                <option <?php if ($historiaMedica->historia_canal == "CORREO_EMAIL") echo 'selected' ?> value="CORREO_EMAIL">CORREO ELECTRONICO</option>
-                                                <option <?php if ($historiaMedica->historia_canal == "CORREO_INTERNO") echo 'selected' ?> value="CORREO_INTERNO">CORREO INTERNO</option>
+                                                <option <?php if ($historiaMedica->historia_canal == "EMAIL") echo 'selected' ?> value="EMAIL">EMAIL</option>
+                                                <option <?php if ($historiaMedica->historia_canal == "MENSAJERIA") echo 'selected' ?> value="MENSAJERIA">MENSAJERIA INTERNA</option>
                                                 <option <?php if ($historiaMedica->historia_canal == "WEB") echo 'selected' ?> value="WEB">PAGINA WEB</option>
+                                                <option <?php if ($historiaMedica->historia_canal == "TELEFONO") echo 'selected' ?> value="TELEFONO">TELEFONO</option>
                                                 <option <?php if ($historiaMedica->historia_canal == "VENTANILLA") echo 'selected' ?> value="VENTANILLA">VENTANILLA UNICA</option>
                                             </select>
                                         <?php }?>
@@ -231,9 +232,21 @@
 
                                         <?php if ($this->auth->usuario()->medico_nivel == '1') { ?>                                        
                                             <select name="area" id="area" class="form-control">
-                                                <option <?php if ($historiaMedica->historia_area == "POT") echo 'selected' ?> value="POT">Direccion de Ordenamiento Territorial</option>
-                                                <option <?php if ($historiaMedica->historia_area == "CALIDAD") echo 'selected' ?> value="CALIDAD">Direccion de Sistemas de Gestion</option>
-                                                <option <?php if ($historiaMedica->historia_area == "SOCIOECONOMICA") echo 'selected' ?> value="SOCIOECONOMICA">Direccion de Asuntos Socioeconomicos</option>
+                                                <option <?php if ($historiaMedica->historia_area == "DAS1") echo 'selected' ?> value="DAS1">Direccion de Asuntos Socioeconomicos - Banco de Proyectos</option>
+                                                <option <?php if ($historiaMedica->historia_area == "DAS2") echo 'selected' ?> value="DAS2">Direccion de Asuntos Socioeconomicos - Desarrollo Socioeconomico</option>
+                                                <option <?php if ($historiaMedica->historia_area == "DAS3") echo 'selected' ?> value="DAS3">Direccion de Asuntos Socioeconomicos - Presupuesto Participativo</option>
+
+                                                <option <?php if ($historiaMedica->historia_area == "DOT1") echo 'selected' ?> value="DOT1">Direccion de Ordenamiento Territorial - Estratificacion</option>
+                                                <option <?php if ($historiaMedica->historia_area == "DOT2") echo 'selected' ?> value="DOT2">Direccion de Ordenamiento Territorial - Juridica</option>
+                                                <option <?php if ($historiaMedica->historia_area == "DOT3") echo 'selected' ?> value="DOT3">Direccion de Ordenamiento Territorial - Licencias de intervencion y ocupacion espacio publico</option>
+                                                <option <?php if ($historiaMedica->historia_area == "DOT4") echo 'selected' ?> value="DOT4">Direccion de Ordenamiento Territorial - Nomenclatura</option>
+                                                <option <?php if ($historiaMedica->historia_area == "DOT5") echo 'selected' ?> value="DOT5">Direccion de Ordenamiento Territorial - Ordenamiento Territorial</option>
+                                                <option <?php if ($historiaMedica->historia_area == "DOT6") echo 'selected' ?> value="DOT6">Direccion de Ordenamiento Territorial - Propiedad Horizontal</option>
+                                                <option <?php if ($historiaMedica->historia_area == "DOT7") echo 'selected' ?> value="DOT7">Direccion de Ordenamiento Territorial - Servicios Publicos</option>
+
+                                                <option <?php if ($historiaMedica->historia_area == "DSG1") echo 'selected' ?> value="DSG1">Direccion de Sistemas de Gestion - Sistemas de Gestion</option>
+
+                                                <option <?php if ($historiaMedica->historia_area == "INF1") echo 'selected' ?> value="INF1">Informativas - Informativas</option>
                                             </select>
                                         <?php }?>
                                     </div>
@@ -244,6 +257,7 @@
                                         <?php if ($this->auth->usuario()->medico_nivel == '2') { ?>
                                             <!-- El input oculto 'Hidden' carga el codigo y vuelve y lo envia al guardar -->
                                             <input type="hidden" value="<?php echo $historiaMedica->historia_funcionario; ?>" name="funcionario" id="funcionario" class="form-control">
+                                            
                                             <!-- El input visible solo muestra el nombre del usuario pero NO se utiliza para ser guardado, 
                                             se asume que si el usuario esta viendo este registro el nombre corresponde al obtenido mediante Auth-->
                                             <input readonly value="<?php echo $this->auth->usuario()->medico_nombres; ?> <?php echo $this->auth->usuario()->medico_apellidos; ?>" name="funcionarioVisible" id="funcionarioVisible" class="form-control">

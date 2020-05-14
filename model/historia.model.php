@@ -50,9 +50,13 @@ class Historia
 			$result = array();
 
 			if ($nivel=='1') //ADMINISTRADOR - Consulta TODOS los registros
-				$stm = $this->pdo->prepare("SELECT * FROM historia ORDER BY historia_radicado_gestion DESC");	
+				//$stm = $this->pdo->prepare("SELECT * FROM historia ORDER BY historia_radicado_gestion DESC");	
+				//Consulta con JOIN para traer los datos del Funionario(Medico) a quien se le asigno la PQR
+				$stm = $this->pdo->prepare("SELECT historia.*, medico.medico_nombres, medico.medico_apellidos FROM historia JOIN medico ON historia_funcionario = medico_id;");
 			else // USUARIO - Consulta SOLO los registros a cargo
-				$stm = $this->pdo->prepare("SELECT * FROM historia WHERE historia_funcionario = '$usuario' ORDER BY historia_radicado_gestion DESC");	
+				//$stm = $this->pdo->prepare("SELECT * FROM historia WHERE historia_funcionario = '$usuario' ORDER BY historia_radicado_gestion DESC");	
+				//Consulta con JOIN para traer los datos del Funionario(Medico) a quien se le asigno la PQR
+				$stm = $this->pdo->prepare("SELECT historia.*, medico.medico_nombres, medico.medico_apellidos FROM historia JOIN medico ON historia_funcionario = medico_id WHERE historia_funcionario = '$usuario'  ORDER BY historia_radicado_gestion DESC");
 
 			$stm->execute();
 
@@ -91,7 +95,7 @@ class Historia
 			$stm->execute(array($idHistoria));
 		} 
 		catch (Exception $e){
-			die($e->getMessage());
+			//die($e->getMessage());
 		}
 	}
 
