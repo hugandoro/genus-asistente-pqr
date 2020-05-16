@@ -28,7 +28,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <br><br>
-                                    <?php if ($this->auth->usuario()->medico_nivel == '2') $aux = 'readonly '; else $aux = ''; ?>
+                                    <!-- Deshabilita campor para usuarios nivel USUARIO '2' o AUDITOR '0' -->
+                                    <?php if (($this->auth->usuario()->medico_nivel == '2') || ($this->auth->usuario()->medico_nivel == '0')) $aux = 'readonly '; else $aux = ''; ?> 
 
                                     <!-- Fila 1 -->
                                     <div class="form-group col-md-1" style="display: block;">
@@ -39,7 +40,7 @@
                                     <div class="form-group col-md-6" style="display: block;">
                                         <label for="clasificacion_pqr">Clasificacion de la PQR</label>
 
-                                        <?php if ($this->auth->usuario()->medico_nivel == '2') { ?>
+                                        <?php if (($this->auth->usuario()->medico_nivel == '2')  || ($this->auth->usuario()->medico_nivel == '0')) { ?>
                                             <input readonly value="<?php echo $historiaMedica->historia_clasificacion_pqr; ?>" name="clasificacion_pqr" id="clasificacion_pqr" class="form-control">
                                         <?php }?>
 
@@ -53,7 +54,8 @@
                                                 <option <?php if ($historiaMedica->historia_clasificacion_pqr == "PETICION_GENERAL") echo 'selected' ?> value="PETICION_GENERAL">Petición de interese general o particular - 15 dias</option>
                                                 <option <?php if ($historiaMedica->historia_clasificacion_pqr == "PETICION_CONSULTA") echo 'selected' ?> value="PETICION_CONSULTA">Petición de consulta - 30 dias</option>
                                                 <option <?php if ($historiaMedica->historia_clasificacion_pqr == "QUEJA") echo 'selected' ?> value="QUEJA">Queja, reclamo y manifestación - 15 dias</option>  
-                                                <option <?php if ($historiaMedica->historia_clasificacion_pqr == "TUTELA") echo 'selected' ?> value="TUTELA">Tutela - 2 dias</option>                                                    
+                                                <option <?php if ($historiaMedica->historia_clasificacion_pqr == "TUTELA") echo 'selected' ?> value="TUTELA">Tutela - 2 dias</option>         
+                                                <option <?php if ($historiaMedica->historia_clasificacion_pqr == "NO_CLASIFICADA") echo 'selected' ?> value="NO_CLASIFICADA">No clasificada</option>                                                                                               
                                             </select>
                                         <?php }?>
                                     </div>
@@ -114,20 +116,30 @@
                                     <div class="form-group col-md-3" style="display: block;">
                                         <label for="cargo">Cargo/Funcion</label>
 
-                                        <?php if ($this->auth->usuario()->medico_nivel == '2') { ?>
+                                        <?php if (($this->auth->usuario()->medico_nivel == '2') || ($this->auth->usuario()->medico_nivel == '0')) { ?>
                                             <input readonly value="<?php echo $historiaMedica->historia_cargo; ?>" name="cargo" id="cargo" class="form-control">
                                         <?php }?>
 
                                         <?php if ($this->auth->usuario()->medico_nivel == '1') { ?>
                                             <select name="cargo" id="cargo" class="form-control">
-                                                <option <?php if ($historiaMedica->historia_cargo == "ADMINISTRADOR") echo 'selected' ?> value="ADMINISTRADOR">ADMINISTRADOR</option>
-                                                <option <?php if ($historiaMedica->historia_cargo == "CONCEJAL") echo 'selected' ?> value="CONCEJAL">CONCEJAL</option>
-                                                <option <?php if ($historiaMedica->historia_cargo == "COORDINADOR") echo 'selected' ?> value="COORDINADOR">COORDINADOR</option>
-                                                <option <?php if ($historiaMedica->historia_cargo == "DIRECTOR") echo 'selected' ?> value="DIRECTOR">DIRECTOR</option>
-                                                <option <?php if ($historiaMedica->historia_cargo == "GERENTE") echo 'selected' ?> value="GERENTE">GERENTE</option>
-                                                <option <?php if ($historiaMedica->historia_cargo == "PETICIONARIO") echo 'selected' ?> value="PETICIONARIO">PETICIONARIO</option>
-                                                <option <?php if ($historiaMedica->historia_cargo == "PRESIDENTE") echo 'selected' ?> value="PRESIDENTE">PRESIDENTE</option>
-                                                <option <?php if ($historiaMedica->historia_cargo == "REPRESENTANTE_LEGAL") echo 'selected' ?> value="REPRESENTANTE_LEGAL">REPRESENTANTE LEGAL</option>
+                                                <option <?php if ($historiaMedica->historia_cargo == "Administrador") echo 'selected' ?> value="Administrador">Administrador(a)</option>
+                                                <option <?php if ($historiaMedica->historia_cargo == "Alcalde") echo 'selected' ?> value="Alcalde">Alcalde(sa)</option>
+                                                <option <?php if ($historiaMedica->historia_cargo == "Asesor") echo 'selected' ?> value="Asesor">Asesor(a)</option>
+                                                <option <?php if ($historiaMedica->historia_cargo == "Concejal") echo 'selected' ?> value="Concejal">Concejal</option>
+                                                <option <?php if ($historiaMedica->historia_cargo == "Contralor") echo 'selected' ?> value="Contralor">Contralor(a)</option>
+                                                <option <?php if ($historiaMedica->historia_cargo == "Coordinador") echo 'selected' ?> value="Coordinador">Coordinador(a)</option>
+                                                <option <?php if ($historiaMedica->historia_cargo == "Curador") echo 'selected' ?> value="Curador">Curador(a)</option>
+                                                <option <?php if ($historiaMedica->historia_cargo == "Director") echo 'selected' ?> value="Director">Director(a)</option>
+                                                <option <?php if ($historiaMedica->historia_cargo == "Gerente") echo 'selected' ?> value="Gerente">Gerente</option>
+                                                <option <?php if ($historiaMedica->historia_cargo == "Jefe de area") echo 'selected' ?> value="Jefe de area">Jefe de área</option>
+                                                <option <?php if ($historiaMedica->historia_cargo == "Juez") echo 'selected' ?> value="Juez">Juez</option>
+                                                <option <?php if ($historiaMedica->historia_cargo == "Personero") echo 'selected' ?> value="Personero">Personero(a)</option>
+                                                <option <?php if ($historiaMedica->historia_cargo == "Peticionario") echo 'selected' ?> value="Peticionario">Peticionario(a)</option>
+                                                <option <?php if ($historiaMedica->historia_cargo == "Presidente") echo 'selected' ?> value="Presidente">Presidente</option>
+                                                <option <?php if ($historiaMedica->historia_cargo == "Procurador") echo 'selected' ?> value="Procurador">Procurador(a)</option>
+                                                <option <?php if ($historiaMedica->historia_cargo == "Representante Legal") echo 'selected' ?> value="Representante Legal">Representante Legal</option>
+                                                <option <?php if ($historiaMedica->historia_cargo == "Secretario") echo 'selected' ?> value="Secretario">Secretario(a)</option>
+                                                <option <?php if ($historiaMedica->historia_cargo == "Subdirector") echo 'selected' ?> value="Subdirector">Subdirector(a)</option>
                                             </select>
                                         <?php }?>
                                     </div>
@@ -152,7 +164,7 @@
                                     <div class="form-group col-md-4" style="display: block;">
                                         <label for="tipo_usuario">Tipo usuario</label>
 
-                                        <?php if ($this->auth->usuario()->medico_nivel == '2') { ?>
+                                        <?php if (($this->auth->usuario()->medico_nivel == '2') || ($this->auth->usuario()->medico_nivel == '0')) { ?>
                                             <input readonly value="<?php echo $historiaMedica->historia_tipo_usuario; ?>" name="tipo_usuario" id="tipo_usuario" class="form-control">
                                         <?php }?>
 
@@ -167,7 +179,7 @@
                                     <div class="form-group col-md-4" style="display: block;">
                                         <label for="clase_pqr">Naturaleza de la PQR</label>
 
-                                        <?php if ($this->auth->usuario()->medico_nivel == '2') { ?>
+                                        <?php if (($this->auth->usuario()->medico_nivel == '2') || ($this->auth->usuario()->medico_nivel == '0')) { ?>
                                             <input readonly value="<?php echo $historiaMedica->historia_clase_pqr; ?>" name="clase_pqr" id="clase_pqr" class="form-control">
                                         <?php }?>
 
@@ -186,7 +198,7 @@
                                     <div class="form-group col-md-4" style="display: block;">
                                         <label for="canal">Canal receptor</label>
 
-                                        <?php if ($this->auth->usuario()->medico_nivel == '2') { ?>
+                                        <?php if (($this->auth->usuario()->medico_nivel == '2') || ($this->auth->usuario()->medico_nivel == '0')) { ?>
                                             <input readonly value="<?php echo $historiaMedica->historia_canal; ?>" name="canal" id="canal" class="form-control">
                                         <?php }?>
 
@@ -209,7 +221,7 @@
 
                                     <div class="form-group col-md-3" style="display: block;">
                                         <label for="num_radicado_gestion">N° Rad.</label>
-                                        <input <?php echo $aux; ?> onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_num_radicado_gestion; ?>" name="num_radicado_gestion" id="num_radicado_gestion" type="number" class="form-control" placeholder="">
+                                        <input <?php echo $aux; ?> onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_num_radicado_gestion; ?>" name="num_radicado_gestion" id="num_radicado_gestion" type="text" class="form-control" placeholder="">
                                     </div>
 
                                     <div class="form-group col-md-3" style="display: block;">
@@ -219,30 +231,33 @@
 
                                     <div class="form-group col-md-3" style="display: block;">
                                         <label for="num_radicado_planeacion">N° Rad.</label>
-                                        <input <?php echo $aux; ?> onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_num_radicado_planeacion; ?>" name="num_radicado_planeacion" id="num_radicado_planeacion" type="number" class="form-control" placeholder="">
+                                        <input <?php echo $aux; ?> onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_num_radicado_planeacion; ?>" name="num_radicado_planeacion" id="num_radicado_planeacion" type="text" class="form-control" placeholder="">
                                     </div>
 
                                     <!-- Fila 3 --> 
                                     <div class="form-group col-md-6" style="display: block;">
                                         <label for="area">Area a quien se le asigna</label>
 
-                                        <?php if ($this->auth->usuario()->medico_nivel == '2') { ?>
+                                        <?php if (($this->auth->usuario()->medico_nivel == '2') || ($this->auth->usuario()->medico_nivel == '0')) { ?>
                                             <input readonly value="<?php echo $historiaMedica->historia_area; ?>" name="area" id="area" class="form-control">
                                         <?php }?>
 
                                         <?php if ($this->auth->usuario()->medico_nivel == '1') { ?>                                        
                                             <select name="area" id="area" class="form-control">
+                                                <option <?php if ($historiaMedica->historia_area == "DSP1") echo 'selected' ?> value="DSP1">Despacho Secretaria - Despacho</option>
+                                                <option <?php if ($historiaMedica->historia_area == "DSP2") echo 'selected' ?> value="DSP2">Despacho Secretaria - Juridica</option>
+
                                                 <option <?php if ($historiaMedica->historia_area == "DAS1") echo 'selected' ?> value="DAS1">Direccion de Asuntos Socioeconomicos - Banco de Proyectos</option>
                                                 <option <?php if ($historiaMedica->historia_area == "DAS2") echo 'selected' ?> value="DAS2">Direccion de Asuntos Socioeconomicos - Desarrollo Socioeconomico</option>
                                                 <option <?php if ($historiaMedica->historia_area == "DAS3") echo 'selected' ?> value="DAS3">Direccion de Asuntos Socioeconomicos - Presupuesto Participativo</option>
+                                                <option <?php if ($historiaMedica->historia_area == "DAS4") echo 'selected' ?> value="DAS4">Direccion de Asuntos Socioeconomicos - Sisben</option>
 
                                                 <option <?php if ($historiaMedica->historia_area == "DOT1") echo 'selected' ?> value="DOT1">Direccion de Ordenamiento Territorial - Estratificacion</option>
-                                                <option <?php if ($historiaMedica->historia_area == "DOT2") echo 'selected' ?> value="DOT2">Direccion de Ordenamiento Territorial - Juridica</option>
-                                                <option <?php if ($historiaMedica->historia_area == "DOT3") echo 'selected' ?> value="DOT3">Direccion de Ordenamiento Territorial - Licencias de intervencion y ocupacion espacio publico</option>
-                                                <option <?php if ($historiaMedica->historia_area == "DOT4") echo 'selected' ?> value="DOT4">Direccion de Ordenamiento Territorial - Nomenclatura</option>
-                                                <option <?php if ($historiaMedica->historia_area == "DOT5") echo 'selected' ?> value="DOT5">Direccion de Ordenamiento Territorial - Ordenamiento Territorial</option>
-                                                <option <?php if ($historiaMedica->historia_area == "DOT6") echo 'selected' ?> value="DOT6">Direccion de Ordenamiento Territorial - Propiedad Horizontal</option>
-                                                <option <?php if ($historiaMedica->historia_area == "DOT7") echo 'selected' ?> value="DOT7">Direccion de Ordenamiento Territorial - Servicios Publicos</option>
+                                                <option <?php if ($historiaMedica->historia_area == "DOT2") echo 'selected' ?> value="DOT2">Direccion de Ordenamiento Territorial - Licencias de intervencion y ocupacion espacio publico</option>
+                                                <option <?php if ($historiaMedica->historia_area == "DOT3") echo 'selected' ?> value="DOT3">Direccion de Ordenamiento Territorial - Nomenclatura</option>
+                                                <option <?php if ($historiaMedica->historia_area == "DOT4") echo 'selected' ?> value="DOT4">Direccion de Ordenamiento Territorial - Ordenamiento Territorial</option>
+                                                <option <?php if ($historiaMedica->historia_area == "DOT5") echo 'selected' ?> value="DOT5">Direccion de Ordenamiento Territorial - Propiedad Horizontal</option>
+                                                <option <?php if ($historiaMedica->historia_area == "DOT6") echo 'selected' ?> value="DOT6">Direccion de Ordenamiento Territorial - Servicios Publicos</option>
 
                                                 <option <?php if ($historiaMedica->historia_area == "DSG1") echo 'selected' ?> value="DSG1">Direccion de Sistemas de Gestion - Sistemas de Gestion</option>
 
@@ -254,19 +269,24 @@
                                     <div class="form-group col-md-6" style="display: block;">
                                         <label for="funcionario">Funcionario asignado</label>
 
-                                        <?php if ($this->auth->usuario()->medico_nivel == '2') { ?>
+                                        <?php if (($this->auth->usuario()->medico_nivel == '2') || ($this->auth->usuario()->medico_nivel == '0')) { ?>
                                             <!-- El input oculto 'Hidden' carga el codigo y vuelve y lo envia al guardar -->
                                             <input type="hidden" value="<?php echo $historiaMedica->historia_funcionario; ?>" name="funcionario" id="funcionario" class="form-control">
                                             
                                             <!-- El input visible solo muestra el nombre del usuario pero NO se utiliza para ser guardado, 
                                             se asume que si el usuario esta viendo este registro el nombre corresponde al obtenido mediante Auth-->
+                                            <!-- ATENCION !!! - VALIDAR UN ERROR DE NOMBRE VISIBLE PARA USUARIO AUDITORIES -->
                                             <input readonly value="<?php echo $this->auth->usuario()->medico_nombres; ?> <?php echo $this->auth->usuario()->medico_apellidos; ?>" name="funcionarioVisible" id="funcionarioVisible" class="form-control">
                                         <?php }?>
 
                                         <?php if ($this->auth->usuario()->medico_nivel == '1') { ?>                                                                                                       
                                             <select name="funcionario" id="funcionario" class="form-control">
                                                 <?php foreach($this->modelMedico->listarUsuarios() as $r): ?>
-                                                    <option <?php if ($historiaMedica->historia_funcionario == $r->medico_id) echo 'selected' ?> value=<?php echo $r->medico_id; ?>><?php echo $r->medico_nombres; ?> <?php echo $r->medico_apellidos; ?></option>
+
+                                                    <?php if ($r->medico_nivel == 2){?>
+                                                        <option <?php if ($historiaMedica->historia_funcionario == $r->medico_id) echo 'selected' ?> value=<?php echo $r->medico_id; ?>><?php echo $r->medico_dependencia; ?> | <?php echo $r->medico_nombres; ?> <?php echo $r->medico_apellidos; ?></option>
+                                                    <?php } ?>
+
                                                 <?php endforeach; ?>
                                             </select>
                                         <?php }?>
@@ -288,20 +308,26 @@
                                     <div class="form-group col-md-3" style="display: block;">
                                         <label for="medio_respuesta">Medio de respuesta</label>
 
-                                        <select name="medio_respuesta" id="medio_respuesta" class="form-control">
-                                            <option <?php if ($historiaMedica->historia_medio_respuesta == "CORREO_EMAIL") echo 'selected' ?> value="CORREO_EMAIL">CORREO ELECTRONICO</option>
-                                            <option <?php if ($historiaMedica->historia_medio_respuesta == "OFICIO") echo 'selected' ?> value="OFICIO">OFICIO</option>
-                                        </select>
+                                        <?php if (($this->auth->usuario()->medico_nivel == '2') || ($this->auth->usuario()->medico_nivel == '0')) { ?>
+                                            <input readonly value="<?php echo $historiaMedica->historia_medio_respuesta; ?>" name="medio_respuesta" id="medio_respuesta" class="form-control">
+                                        <?php }?>
+
+                                        <?php if ($this->auth->usuario()->medico_nivel == '1') { ?>                                        
+                                            <select name="medio_respuesta" id="medio_respuesta" class="form-control">
+                                                <option <?php if ($historiaMedica->historia_medio_respuesta == "CORREO_EMAIL") echo 'selected' ?> value="CORREO_EMAIL">CORREO ELECTRONICO</option>
+                                                <option <?php if ($historiaMedica->historia_medio_respuesta == "OFICIO") echo 'selected' ?> value="OFICIO">OFICIO</option>
+                                            </select>
+                                        <?php }?>
                                     </div>
 
                                     <div class="form-group col-md-3" style="display: block;">
                                         <label for="fecha_respuesta">Fecha de respuesta</label>
-                                        <input onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_fecha_respuesta; ?>" name="fecha_respuesta" id="fecha_respuesta" type="date" class="form-control" placeholder="">
+                                        <input <?php echo $aux; ?> onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_fecha_respuesta; ?>" name="fecha_respuesta" id="fecha_respuesta" type="date" class="form-control" placeholder="">
                                     </div>
 
                                     <div class="form-group col-md-2" style="display: block;">
                                         <label for="num_oficio_respuesta">N° de oficio</label>
-                                        <input onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_num_oficio_respuesta; ?>" name="num_oficio_respuesta" id="num_oficio_respuesta" type="number" class="form-control" placeholder="">
+                                        <input <?php echo $aux; ?> onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_num_oficio_respuesta; ?>" name="num_oficio_respuesta" id="num_oficio_respuesta" type="text" class="form-control" placeholder="">
                                     </div>
 
                                     <div class="form-group col-md-4" style="display: block;">
@@ -330,7 +356,7 @@
                                     <!-- Fila 2 --> 
                                     <div class="form-group col-md-12" style="display: block;">
                                         <label for="respuesta">Breve descripcion de la respuesta</label>
-                                        <input onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_respuesta; ?>" name="respuesta" id="respuesta" type="text" class="form-control" placeholder="">
+                                        <input <?php echo $aux; ?> onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_respuesta; ?>" name="respuesta" id="respuesta" type="text" class="form-control" placeholder="">
                                     </div>
 
                                 </div>

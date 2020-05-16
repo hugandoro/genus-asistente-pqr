@@ -45,18 +45,24 @@ class Historia
 	}
 
 	// Metodo para listar resultados de una consulta de historias CON FILTRO COMODIN
-	public function Listar($usuario,$nivel){
+	public function Listar($usuario,$nivel,$area){
 		try{
 			$result = array();
 
 			if ($nivel=='1') //ADMINISTRADOR - Consulta TODOS los registros
 				//$stm = $this->pdo->prepare("SELECT * FROM historia ORDER BY historia_radicado_gestion DESC");	
 				//Consulta con JOIN para traer los datos del Funionario(Medico) a quien se le asigno la PQR
-				$stm = $this->pdo->prepare("SELECT historia.*, medico.medico_nombres, medico.medico_apellidos FROM historia JOIN medico ON historia_funcionario = medico_id;");
+				$stm = $this->pdo->prepare("SELECT historia.*, medico.medico_nombres, medico.medico_apellidos FROM historia JOIN medico ON historia_funcionario = medico_id ORDER BY historia_radicado_gestion DESC");
+			
+			else if ($nivel=='0') //AUDITOR - Consulta TODOS los registros de un AREA MODO AUDITOR
+				//$stm = $this->pdo->prepare("SELECT * FROM historia ORDER BY historia_radicado_gestion DESC");	
+				//Consulta con JOIN para traer los datos del Funionario(Medico) a quien se le asigno la PQR
+				$stm = $this->pdo->prepare("SELECT historia.*, medico.medico_nombres, medico.medico_apellidos FROM historia JOIN medico ON historia_funcionario = medico_id WHERE historia_area LIKE '%$area%' ORDER BY historia_radicado_gestion DESC");
+
 			else // USUARIO - Consulta SOLO los registros a cargo
 				//$stm = $this->pdo->prepare("SELECT * FROM historia WHERE historia_funcionario = '$usuario' ORDER BY historia_radicado_gestion DESC");	
 				//Consulta con JOIN para traer los datos del Funionario(Medico) a quien se le asigno la PQR
-				$stm = $this->pdo->prepare("SELECT historia.*, medico.medico_nombres, medico.medico_apellidos FROM historia JOIN medico ON historia_funcionario = medico_id WHERE historia_funcionario = '$usuario'  ORDER BY historia_radicado_gestion DESC");
+				$stm = $this->pdo->prepare("SELECT historia.*, medico.medico_nombres, medico.medico_apellidos FROM historia JOIN medico ON historia_funcionario = medico_id WHERE historia_funcionario = '$usuario' ORDER BY historia_radicado_gestion DESC");
 
 			$stm->execute();
 
@@ -275,6 +281,8 @@ class Historia
 	// Metodo para calcular dias habiles
 	function sumasDiaSemana($fecha,$dias)
 	{
+		$dias--; //Restamos "1" para contar como habil el dia que fue radicado
+
 		$datestart= strtotime($fecha);
 		$datesuma = 15 * 86400;
 		$diasemana = date('N',$datestart);

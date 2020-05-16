@@ -44,7 +44,7 @@ class Medico
 	public function listarUsuarios(){
 		try{
 			$result = array();
-			$stm = $this->pdo->prepare("SELECT * FROM medico ORDER BY medico_nombres");	
+			$stm = $this->pdo->prepare("SELECT * FROM medico ORDER BY medico_dependencia");	
 			$stm->execute();
 
 			return $stm->fetchAll(PDO::FETCH_OBJ);

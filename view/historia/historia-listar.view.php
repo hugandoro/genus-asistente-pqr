@@ -21,7 +21,7 @@
         </tr>
     </thead>
     <tbody>
-    <?php foreach($this->modelHistoria->Listar($this->auth->usuario()->medico_id,$this->auth->usuario()->medico_nivel) as $r): ?>
+    <?php foreach($this->modelHistoria->Listar($this->auth->usuario()->medico_id,$this->auth->usuario()->medico_nivel,$this->auth->usuario()->medico_dependencia_codigo) as $r): ?>
 
         <!-- Calculo fecha de vencimiento -->
         <?php
