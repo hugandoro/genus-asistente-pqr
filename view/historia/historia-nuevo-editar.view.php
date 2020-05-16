@@ -308,11 +308,11 @@
                                     <div class="form-group col-md-3" style="display: block;">
                                         <label for="medio_respuesta">Medio de respuesta</label>
 
-                                        <?php if (($this->auth->usuario()->medico_nivel == '2') || ($this->auth->usuario()->medico_nivel == '0')) { ?>
+                                        <?php if (($this->auth->usuario()->medico_nivel == '0')) { ?>
                                             <input readonly value="<?php echo $historiaMedica->historia_medio_respuesta; ?>" name="medio_respuesta" id="medio_respuesta" class="form-control">
                                         <?php }?>
 
-                                        <?php if ($this->auth->usuario()->medico_nivel == '1') { ?>                                        
+                                        <?php if (($this->auth->usuario()->medico_nivel == '1') || ($this->auth->usuario()->medico_nivel == '2')) { ?>                                        
                                             <select name="medio_respuesta" id="medio_respuesta" class="form-control">
                                                 <option <?php if ($historiaMedica->historia_medio_respuesta == "CORREO_EMAIL") echo 'selected' ?> value="CORREO_EMAIL">CORREO ELECTRONICO</option>
                                                 <option <?php if ($historiaMedica->historia_medio_respuesta == "OFICIO") echo 'selected' ?> value="OFICIO">OFICIO</option>
@@ -322,12 +322,12 @@
 
                                     <div class="form-group col-md-3" style="display: block;">
                                         <label for="fecha_respuesta">Fecha de respuesta</label>
-                                        <input <?php echo $aux; ?> onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_fecha_respuesta; ?>" name="fecha_respuesta" id="fecha_respuesta" type="date" class="form-control" placeholder="">
+                                        <input <?php if (($this->auth->usuario()->medico_nivel == '0')) echo "readonly"; ?> onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_fecha_respuesta; ?>" name="fecha_respuesta" id="fecha_respuesta" type="date" class="form-control" placeholder="">
                                     </div>
 
                                     <div class="form-group col-md-2" style="display: block;">
                                         <label for="num_oficio_respuesta">N° de oficio</label>
-                                        <input <?php echo $aux; ?> onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_num_oficio_respuesta; ?>" name="num_oficio_respuesta" id="num_oficio_respuesta" type="text" class="form-control" placeholder="">
+                                        <input <?php if (($this->auth->usuario()->medico_nivel == '0')) echo "readonly"; ?> onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_num_oficio_respuesta; ?>" name="num_oficio_respuesta" id="num_oficio_respuesta" type="text" class="form-control" placeholder="">
                                     </div>
 
                                     <div class="form-group col-md-4" style="display: block;">
@@ -356,7 +356,7 @@
                                     <!-- Fila 2 --> 
                                     <div class="form-group col-md-12" style="display: block;">
                                         <label for="respuesta">Breve descripcion de la respuesta</label>
-                                        <input <?php echo $aux; ?> onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_respuesta; ?>" name="respuesta" id="respuesta" type="text" class="form-control" placeholder="">
+                                        <input <?php if (($this->auth->usuario()->medico_nivel == '0')) echo "readonly"; ?> onblur="Mayuscula(this);" value="<?php echo $historiaMedica->historia_respuesta; ?>" name="respuesta" id="respuesta" type="text" class="form-control" placeholder="">
                                     </div>
 
                                 </div>
