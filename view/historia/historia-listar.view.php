@@ -6,14 +6,14 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>Cod</th>
+            <th>N° Rad. Planeacion</th>
             <th>Nombre</th>
             <th>Apellido</th>
             <th>Clase</th>
             <th>Estado</th>
             <th>Radicado gestion</th>
             <th>Vencimiento</th>
-            <th>Dias para vencer</th>
+            <th>Dias</th>
             <th>Funcionario</th>
             <th></th>
             <th style="width:20px;"></th>
@@ -39,7 +39,7 @@
         <!-- Fin calculo fechas de vencimiento -->
 
         <tr>
-            <td><?php echo $r->historia_id; ?></td>
+            <td><?php echo $r->historia_num_radicado_planeacion; ?></td>
             <td><?php echo $r->historia_nombre_1; ?></td>
             <td><?php echo $r->historia_apellido_1; ?></td>
             <td><?php echo $r->historia_clase_pqr; ?></td>
