@@ -209,6 +209,7 @@
                                                 <option <?php if ($historiaMedica->historia_canal == "WEB") echo 'selected' ?> value="WEB">PAGINA WEB</option>
                                                 <option <?php if ($historiaMedica->historia_canal == "TELEFONO") echo 'selected' ?> value="TELEFONO">TELEFONO</option>
                                                 <option <?php if ($historiaMedica->historia_canal == "VENTANILLA") echo 'selected' ?> value="VENTANILLA">VENTANILLA UNICA</option>
+                                                <option <?php if ($historiaMedica->historia_canal == "GOBEL") echo 'selected' ?> value="GOBEL">GOBEL</option>
                                             </select>
                                         <?php }?>
                                     </div>
