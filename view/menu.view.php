@@ -41,7 +41,7 @@
           </a>
 
           <ul class="dropdown-menu">
-            <!--<li><a href="#">Generar Certificado (En construccion)</a></li>-->
+            <li><a href="?c=Historia&a=certificado&token=<?php echo @$_GET['token']; ?>">Generar Certificado de ESTADO ACTUAL</a></li>
             <li><a href="?c=auth&a=desconectarse">Desconectarse</a></li>
           </ul>
         </li>
