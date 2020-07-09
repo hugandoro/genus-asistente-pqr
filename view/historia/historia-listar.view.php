@@ -112,7 +112,6 @@
 
         <button class="btn btn-default btn-xs" name="btn-filtrar" id="btn-filtrar">Filtrar por Funcionario</button>
     </form>
-
 </div>
 
 <table class="table table-striped">

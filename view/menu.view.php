@@ -21,16 +21,7 @@
 
         <li><a href="?c=Historia&a=listar&token=<?php echo @$_GET['token']; ?>">Listar registros PQR</a></li>
 
-        <!--<li class="dropdown">-->
-        <!--  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">-->
-        <!--    Metricas y Estadisticas-->
-        <!--  </a>-->
-
-        <!--  <ul class="dropdown-menu">-->
-        <!--    <li><a href="#">Generar informe resumido (En construccion)</a></li>-->
-        <!--    <li><a href="#">Generar informe completo (En construccion)</a></li>-->
-        <!--  </ul>-->
-        <!--</li>-->
+        <li><a href="?c=Historia&a=estadistico&token=<?php echo @$_GET['token']; ?>">Resumen Estadistico</a></li>
 
       </ul>
 

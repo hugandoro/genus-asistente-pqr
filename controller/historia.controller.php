@@ -69,6 +69,15 @@ class HistoriaController{
         require_once 'view/footer.view.php';
     }
 
+    // Metodo para generar CERTIFICADO
+    public function estadistico(){
+        //Carga las vistas para presentar al usuario
+        require_once 'view/header.view.php';
+        require_once 'view/menu.view.php';
+        require_once 'view/historia/historia-estadistico.view.php';
+        require_once 'view/footer.view.php';
+    }
+
     // Metodo para guardar una nueva historia o los cambios realizados a una ya existente
     public function Guardar(){
         $historiaMedica = new Historia();
