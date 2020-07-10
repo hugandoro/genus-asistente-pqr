@@ -9,6 +9,9 @@
     $pqrCerradas = 0;
     $pqrTodas = 0;
 
+    $pqrTipoInterno = 0;
+    $pqrTipoExterno = 0;
+
     $pqrClasificacionConcepto = 0;
     $pqrClasificacionLicencia = 0;
     $pqrClasificacionOrgano = 0;
@@ -33,6 +36,12 @@
     $pqrCanalTelefono = 0;
     $pqrCanalVentanilla = 0;
 
+    $pqrAreaDespacho = 0;
+    $pqrAreaSocioeconomica = 0;
+    $pqrAreaPOT = 0;
+    $pqrAreaCalidad = 0;
+    $pqrAreaInformativas = 0;
+
 
     // Recorrido de todos los registros para clasificar y mover los contadores segun estado de las PQR
     foreach($this->modelHistoria->Listar($this->auth->usuario()->medico_id,$this->auth->usuario()->medico_nivel,$this->auth->usuario()->medico_dependencia_codigo) as $r): 
@@ -55,6 +64,16 @@
             else
                 $pqrCerradas++;
 
+
+            switch ($r->historia_tipo_usuario) 
+            {
+                case "INTERNO":
+                    $pqrTipoInterno ++;
+                    break;
+                case "EXTERNO":
+                    $pqrTipoExterno ++;
+                    break;
+            }
 
             switch ($r->historia_clasificacion_pqr) 
             {
@@ -133,6 +152,53 @@
                     break;
             }
 
+
+            switch ($r->historia_area) 
+            {
+                case "DSP1":
+                    $pqrAreaDespacho ++;
+                    break;
+                case "DSP2":
+                    $pqrAreaDespacho ++;
+                    break;
+                case "DAS1":
+                    $pqrAreaSocioeconomica ++;
+                    break;
+                case "DAS2":
+                    $pqrAreaSocioeconomica ++;
+                    break;
+                case "DAS3":
+                    $pqrAreaSocioeconomica ++;
+                    break;
+                case "DAS4":
+                    $pqrAreaSocioeconomica ++;
+                    break;    
+                case "DOT1":
+                    $pqrAreaPOT ++;
+                    break;
+                case "DOT2":
+                    $pqrAreaPOT ++;
+                    break;
+                case "DOT3":
+                    $pqrAreaPOT ++;
+                    break;
+                case "DOT4":
+                    $pqrAreaPOT ++;
+                    break;  
+                case "DOT5":
+                    $pqrAreaPOT ++;
+                    break;
+                case "DOT6":
+                    $pqrAreaPOT ++;
+                    break;
+                case "DSG1":
+                    $pqrAreaCalidad ++;
+                break;  
+                case "INF1":
+                    $pqrAreaInformativas ++;
+                break; 
+            }   
+
         }       
     endforeach;
 ?>
@@ -162,7 +228,7 @@
 
 <h3><b>N° de PQR recepcionadas y estado de las mismas</b></h3>
 <div class="form-group col-md-12">
-    <table>
+    <table class="table table-sm table-dark">
         <tr>
             <td>PQR Abiertas </td>
             <td><h4><b>&nbsp;&nbsp;&nbsp;<?php echo $pqrAbiertas; ?></b></h4></td>
@@ -173,11 +239,41 @@
         </tr>
     </table>
 </div>
+
+
+<h3><b>Repuestas dentro/fuera de terminos</b></h3>
+<div class="form-group col-md-12">
+    <table class="table table-sm table-dark">
+        <tr>
+            <td>PQR con respuestas DENTRO de los terminos </td>
+            <td><h4><b>&nbsp;&nbsp;&nbsp; *** En contruccion *** </b></h4></td>
+        </tr>
+        <tr>
+            <td>PQR con respuestas FUERA de los terminos </td>
+            <td><h4><b>&nbsp;&nbsp;&nbsp; *** En contruccion *** </td>
+        </tr>
+    </table>
+</div>
+
+
+<h3><b>Tipo de PQR</b></h3>
+<div class="form-group col-md-12">
+    <table class="table table-sm table-dark">
+        <tr>
+            <td>PQR Internas </td>
+            <td><h4><b>&nbsp;&nbsp;&nbsp;<?php echo $pqrTipoInterno; ?></b></h4></td>
+        </tr>
+        <tr>
+            <td>PQR Externas </td>
+            <td><h4><b>&nbsp;&nbsp;&nbsp;<?php echo $pqrTipoExterno; ?></td>
+        </tr>
+    </table>
+</div>
                                                                                               
 
 <h3><b>Clasificacion de las PQR</b></h3>
 <div class="form-group col-md-12">
-    <table>
+    <table class="table table-sm table-dark">
         <tr>
             <td>Concepto sobre traslado de poste </td>
             <td><h4><b>&nbsp;&nbsp;&nbsp;<?php echo $pqrClasificacionConcepto; ?></b></h4></td>
@@ -224,7 +320,7 @@
 
 <h3><b>Clase de PQR</b></h3>
 <div class="form-group col-md-12">
-    <table>
+    <table class="table table-sm table-dark">
         <tr>
             <td>Peticiones </td>
             <td><h4><b>&nbsp;&nbsp;&nbsp;<?php echo $pqrClasePeticion; ?></b></h4></td>
@@ -255,7 +351,7 @@
 
 <h3><b>Via de recepcion de las PQR (Canales)</b></h3>
 <div class="form-group col-md-12">
-    <table>
+    <table class="table table-sm table-dark">
         <tr>
             <td>Email </td>
             <td><h4><b>&nbsp;&nbsp;&nbsp;<?php echo $pqrCanalEmail; ?></b></h4></td>
@@ -280,6 +376,30 @@
 </div>
 
 
-
+<h3><b>Distribucion por Direcciones Operativas</b></h3>
+<div class="form-group col-md-12">
+    <table class="table table-sm table-dark">
+        <tr>
+            <td>Despacho Secretaria de Planeacion </td>
+            <td><h4><b>&nbsp;&nbsp;&nbsp;<?php echo $pqrAreaDespacho; ?></b></h4></td>
+        </tr>
+        <tr>
+            <td>Direccion de Asuntos Socioeconomicos </td>
+            <td><h4><b>&nbsp;&nbsp;&nbsp;<?php echo $pqrAreaSocioeconomica; ?></b></h4></td>
+        </tr>
+        <tr>
+            <td>Direccion de Ordenamiento Territorial </td>
+            <td><h4><b>&nbsp;&nbsp;&nbsp;<?php echo $pqrAreaPOT; ?></b></h4></td>
+        </tr>
+        <tr>
+            <td>Direccion de Sistemas de Gestion </td>
+            <td><h4><b>&nbsp;&nbsp;&nbsp;<?php echo $pqrAreaCalidad; ?></b></h4></td>
+        </tr>
+        <tr>
+            <td>Informativas </td>
+            <td><h4><b>&nbsp;&nbsp;&nbsp;<?php echo $pqrAreaInformativas; ?></b></h4></td>
+        </tr>
+    </table>
+</div>
 
 
