@@ -9,6 +9,9 @@
     $pqrCerradas = 0;
     $pqrTodas = 0;
 
+    $pqrRespuestaTerminos = 0;
+    $pqrRespuestaFueraTerminos = 0;
+
     $pqrTipoInterno = 0;
     $pqrTipoExterno = 0;
 
@@ -53,9 +56,13 @@
             $sumarDias = $r->historia_dias; //Dias que se establecieron como plazo para responder
             $fechaVencimiento = $this->modelHistoria->sumasDiaSemana($r->historia_radicado_gestion,$sumarDias);
 
+            $fechaRespuesta = $r->historia_fecha_respuesta;
+            $diasRestantes = $this->modelHistoria->diasPasados($fechaVencimiento,$fechaRespuesta);
+
             $fechaActual= date("Y/m/d");
-            $diasRestantes = $this->modelHistoria->diasPasados($fechaVencimiento,$fechaActual);
+            $diasCorridos = $this->modelHistoria->diasPasados($fechaVencimiento,$fechaActual);
             // Fin calculo fechas de vencimiento
+
 
             $pqrTodas++;
                     
@@ -63,6 +70,12 @@
                 $pqrAbiertas++;
             else
                 $pqrCerradas++;
+
+
+            if (($diasRestantes >= 0) && ($r->historia_fecha_respuesta != NULL)) 
+                $pqrRespuestaTerminos++;
+            if (($diasRestantes < 0) && ($r->historia_fecha_respuesta != NULL)) 
+                $pqrRespuestaFueraTerminos++;    
 
 
             switch ($r->historia_tipo_usuario) 
@@ -246,11 +259,11 @@
     <table class="table table-sm table-dark">
         <tr>
             <td>PQR con respuestas DENTRO de los terminos </td>
-            <td><h4><b>&nbsp;&nbsp;&nbsp; *** En contruccion *** </b></h4></td>
+            <td><h4><b>&nbsp;&nbsp;&nbsp; <?php echo $pqrRespuestaTerminos; ?></b></h4></td>
         </tr>
         <tr>
             <td>PQR con respuestas FUERA de los terminos </td>
-            <td><h4><b>&nbsp;&nbsp;&nbsp; *** En contruccion *** </td>
+            <td><h4><b>&nbsp;&nbsp;&nbsp; <?php echo $pqrRespuestaFueraTerminos; ?></td>
         </tr>
     </table>
 </div>
