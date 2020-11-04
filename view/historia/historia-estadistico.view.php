@@ -23,6 +23,7 @@
     $pqrClasificacionGeneral = 0;
     $pqrClasificacionConsulta = 0;
     $pqrClasificacionQueja = 0;
+    $pqrClasificacionApelacion = 0;
     $pqrClasificacionTutela = 0;
     $pqrClasificacionNC = 0;
 
@@ -113,6 +114,9 @@
                     break;
                 case "QUEJA":
                     $pqrClasificacionQueja ++;
+                    break;
+                case "APELACION_REPOSICION":
+                    $pqrClasificacionApelacion ++;
                     break;
                 case "TUTELA":
                     $pqrClasificacionTutela ++;
@@ -318,6 +322,10 @@
         <tr>
             <td>Queja, reclamo y manifestación </td>
             <td><h4><b>&nbsp;&nbsp;&nbsp;<?php echo $pqrClasificacionQueja; ?></td>
+        </tr>
+        <tr>
+            <td>Recursos de apelacion y reposición </td>
+            <td><h4><b>&nbsp;&nbsp;&nbsp;<?php echo $pqrClasificacionApelacion; ?></td>
         </tr>
         <tr>
             <td>Tutela </td>

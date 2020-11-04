@@ -126,6 +126,7 @@ class Historia
 				if ($data->historia_clasificacion_pqr == "PETICION_GENERAL") $data->historia_dias = '15';
 				if ($data->historia_clasificacion_pqr == "PETICION_CONSULTA") $data->historia_dias = '30';
 				if ($data->historia_clasificacion_pqr == "QUEJA") $data->historia_dias = '15';
+				if ($data->historia_clasificacion_pqr == "APELACION_REPOSICION") $data->historia_dias = '60';
 				if ($data->historia_clasificacion_pqr == "TUTELA") $data->historia_dias = '2';
 			}
 
@@ -230,6 +231,7 @@ class Historia
 			if ($data->historia_clasificacion_pqr == "PETICION_GENERAL") $data->historia_dias = '15';
 			if ($data->historia_clasificacion_pqr == "PETICION_CONSULTA") $data->historia_dias = '30';
 			if ($data->historia_clasificacion_pqr == "QUEJA") $data->historia_dias = '15';
+			if ($data->historia_clasificacion_pqr == "APELACION_REPOSICION") $data->historia_dias = '60';
 			if ($data->historia_clasificacion_pqr == "TUTELA") $data->historia_dias = '2';
 		}
 

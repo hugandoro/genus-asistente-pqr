@@ -54,6 +54,7 @@
                                                 <option <?php if ($historiaMedica->historia_clasificacion_pqr == "PETICION_GENERAL") echo 'selected' ?> value="PETICION_GENERAL">Petición de interese general o particular - 15 dias</option>
                                                 <option <?php if ($historiaMedica->historia_clasificacion_pqr == "PETICION_CONSULTA") echo 'selected' ?> value="PETICION_CONSULTA">Petición de consulta - 30 dias</option>
                                                 <option <?php if ($historiaMedica->historia_clasificacion_pqr == "QUEJA") echo 'selected' ?> value="QUEJA">Queja, reclamo y manifestación - 15 dias</option>  
+                                                <option <?php if ($historiaMedica->historia_clasificacion_pqr == "APELACION_REPOSICION") echo 'selected' ?> value="APELACION_REPOSICION">Recursos de apelacion y reposición - 60 dias</option>         
                                                 <option <?php if ($historiaMedica->historia_clasificacion_pqr == "TUTELA") echo 'selected' ?> value="TUTELA">Tutela - 2 dias</option>         
                                                 <option <?php if ($historiaMedica->historia_clasificacion_pqr == "NO_CLASIFICADA") echo 'selected' ?> value="NO_CLASIFICADA">No clasificada</option>                                                                                               
                                             </select>
