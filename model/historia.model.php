@@ -128,6 +128,9 @@ class Historia
 				if ($data->historia_clasificacion_pqr == "QUEJA") $data->historia_dias = '15';
 				if ($data->historia_clasificacion_pqr == "APELACION_REPOSICION") $data->historia_dias = '60';
 				if ($data->historia_clasificacion_pqr == "TUTELA") $data->historia_dias = '2';
+				if ($data->historia_clasificacion_pqr == "PLANOS") $data->historia_dias = '15';
+				if ($data->historia_clasificacion_pqr == "NOMENCLATURA") $data->historia_dias = '15';
+				if ($data->historia_clasificacion_pqr == "ESTRATIFICACION") $data->historia_dias = '15';
 			}
 
 			$sql = "UPDATE historia SET 
@@ -233,6 +236,9 @@ class Historia
 			if ($data->historia_clasificacion_pqr == "QUEJA") $data->historia_dias = '15';
 			if ($data->historia_clasificacion_pqr == "APELACION_REPOSICION") $data->historia_dias = '60';
 			if ($data->historia_clasificacion_pqr == "TUTELA") $data->historia_dias = '2';
+			if ($data->historia_clasificacion_pqr == "PLANOS") $data->historia_dias = '15';
+			if ($data->historia_clasificacion_pqr == "NOMENCLATURA") $data->historia_dias = '15';	
+			if ($data->historia_clasificacion_pqr == "ESTRATIFICACION") $data->historia_dias = '15';	
 		}
 
 		$sql = "INSERT INTO historia (historia_clasificacion_pqr,historia_dias,historia_asunto,historia_cedula,historia_nombre_1,historia_nombre_2,historia_apellido_1,historia_apellido_2,

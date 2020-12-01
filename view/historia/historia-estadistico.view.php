@@ -26,6 +26,9 @@
     $pqrClasificacionApelacion = 0;
     $pqrClasificacionTutela = 0;
     $pqrClasificacionNC = 0;
+    $pqrClasificacionPlanos = 0;
+    $pqrClasificacionNomenclatura = 0;
+    $pqrClasificacionEstratificacion = 0;
 
     $pqrClasePeticion = 0;
     $pqrClaseQueja = 0;
@@ -123,7 +126,16 @@
                     break;
                 case "NO_CLASIFICADA":
                     $pqrClasificacionNC ++;
+                    break;
+                case "PLANOS":
+                    $pqrClasificacionPlanos ++;
                     break;  
+                case "NOMENCLATURA":
+                    $pqrClasificacionNomenclatura ++;
+                    break; 
+                case "NOMENCLATURA":
+                    $pqrClasificacionEstratificacion ++;
+                    break; 
             }
 
 
@@ -296,8 +308,16 @@
             <td><h4><b>&nbsp;&nbsp;&nbsp;<?php echo $pqrClasificacionConcepto; ?></b></h4></td>
         </tr>
         <tr>
+            <td>Estratificacion </td>
+            <td><h4><b>&nbsp;&nbsp;&nbsp;<?php echo $pqrClasificacionEstratificacion; ?></b></h4></td>
+        </tr>
+        <tr>
             <td>Licencia de intervención y ocupación de espacio público </td>
             <td><h4><b>&nbsp;&nbsp;&nbsp;<?php echo $pqrClasificacionLicencia; ?></b></h4></td>
+        </tr>
+        <tr>
+            <td>Nomenclatura </td>
+            <td><h4><b>&nbsp;&nbsp;&nbsp;<?php echo $pqrClasificacionNomenclatura; ?></b></h4></td>
         </tr>
         <tr>
             <td>Órgano de control, pólitico, disciplinario, fiscal, jurisdiccional, ciudadano </td>
@@ -318,6 +338,10 @@
         <tr>
             <td>Petición de consulta </td>
             <td><h4><b>&nbsp;&nbsp;&nbsp;<?php echo $pqrClasificacionConsulta; ?></td>
+        </tr>
+        <tr>
+            <td>Planos</td>
+            <td><h4><b>&nbsp;&nbsp;&nbsp;<?php echo $pqrClasificacionPlanos; ?></td>
         </tr>
         <tr>
             <td>Queja, reclamo y manifestación </td>
