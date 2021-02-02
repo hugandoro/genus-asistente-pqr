@@ -131,6 +131,11 @@ class Historia
 				if ($data->historia_clasificacion_pqr == "PLANOS") $data->historia_dias = '15';
 				if ($data->historia_clasificacion_pqr == "NOMENCLATURA") $data->historia_dias = '15';
 				if ($data->historia_clasificacion_pqr == "ESTRATIFICACION") $data->historia_dias = '15';
+				if ($data->historia_clasificacion_pqr == "CERTIFICADO_EXISTENCIA") $data->historia_dias = '15';
+				if ($data->historia_clasificacion_pqr == "INSCRIPCION_PERSONERIA") $data->historia_dias = '15';
+				if ($data->historia_clasificacion_pqr == "CAMBIO_REPRESENTA") $data->historia_dias = '15';
+				if ($data->historia_clasificacion_pqr == "INFORMATIVA") $data->historia_dias = '9999';
+				if ($data->historia_clasificacion_pqr == "OTRA_DEPENDENCIA") $data->historia_dias = '9999';
 			}
 
 			$sql = "UPDATE historia SET 
@@ -239,6 +244,11 @@ class Historia
 			if ($data->historia_clasificacion_pqr == "PLANOS") $data->historia_dias = '15';
 			if ($data->historia_clasificacion_pqr == "NOMENCLATURA") $data->historia_dias = '15';	
 			if ($data->historia_clasificacion_pqr == "ESTRATIFICACION") $data->historia_dias = '15';	
+			if ($data->historia_clasificacion_pqr == "CERTIFICADO_EXISTENCIA") $data->historia_dias = '15';
+			if ($data->historia_clasificacion_pqr == "INSCRIPCION_PERSONERIA") $data->historia_dias = '15';
+			if ($data->historia_clasificacion_pqr == "CAMBIO_REPRESENTA") $data->historia_dias = '15';
+			if ($data->historia_clasificacion_pqr == "INFORMATIVA") $data->historia_dias = '9999';
+			if ($data->historia_clasificacion_pqr == "OTRA_DEPENDENCIA") $data->historia_dias = '9999';
 		}
 
 		$sql = "INSERT INTO historia (historia_clasificacion_pqr,historia_dias,historia_asunto,historia_cedula,historia_nombre_1,historia_nombre_2,historia_apellido_1,historia_apellido_2,

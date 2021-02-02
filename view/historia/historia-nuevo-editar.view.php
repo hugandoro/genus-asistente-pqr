@@ -58,7 +58,14 @@
                                                 <option <?php if ($historiaMedica->historia_clasificacion_pqr == "PLANOS") echo 'selected' ?> value="PLANOS">Planos - 15 dias</option>
                                                 <option <?php if ($historiaMedica->historia_clasificacion_pqr == "QUEJA") echo 'selected' ?> value="QUEJA">Queja, reclamo y manifestación - 15 dias</option>  
                                                 <option <?php if ($historiaMedica->historia_clasificacion_pqr == "APELACION_REPOSICION") echo 'selected' ?> value="APELACION_REPOSICION">Recursos de apelacion y reposición - 60 dias</option>         
-                                                <option <?php if ($historiaMedica->historia_clasificacion_pqr == "TUTELA") echo 'selected' ?> value="TUTELA">Tutela - 2 dias</option>         
+                                                <option <?php if ($historiaMedica->historia_clasificacion_pqr == "TUTELA") echo 'selected' ?> value="TUTELA">Tutela - 2 dias</option>     
+
+                                                <option <?php if ($historiaMedica->historia_clasificacion_pqr == "CERTIFICADO_EXISTENCIA") echo 'selected' ?> value="CERTIFICADO_EXISTENCIA">Certificado de Existencia y Representación Legal - 15 dias</option>         
+                                                <option <?php if ($historiaMedica->historia_clasificacion_pqr == "INSCRIPCION_PERSONERIA") echo 'selected' ?> value="INSCRIPCION_PERSONERIA">Inscripción de Personería Jurídica, Representante Legal Y/O Revisor Fiscal - 15 dias</option>         
+                                                <option <?php if ($historiaMedica->historia_clasificacion_pqr == "CAMBIO_REPRESENTA") echo 'selected' ?> value="CAMBIO_REPRESENTA">Cambio Representante Legal Y/O Revisor Fiscal - 15 dias</option>         
+                                                <option <?php if ($historiaMedica->historia_clasificacion_pqr == "INFORMATIVA") echo 'selected' ?> value="INFORMATIVA">Informativa - 9999 dias</option>         
+                                                <option <?php if ($historiaMedica->historia_clasificacion_pqr == "OTRA_DEPENDENCIA") echo 'selected' ?> value="OTRA_DEPENDENCIA">Otras secretarias - 9999 dias</option>         
+    
                                                 <option <?php if ($historiaMedica->historia_clasificacion_pqr == "NO_CLASIFICADA") echo 'selected' ?> value="NO_CLASIFICADA">No clasificada</option>                                                                                               
                                             </select>
                                         <?php }?>

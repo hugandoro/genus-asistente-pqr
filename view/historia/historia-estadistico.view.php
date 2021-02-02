@@ -30,6 +30,14 @@
     $pqrClasificacionNomenclatura = 0;
     $pqrClasificacionEstratificacion = 0;
 
+    // Nuevas
+    $pqrClasificacionCertificadoExistencia = 0;
+    $pqrClasificacionInscripcionPersoneria = 0;
+    $pqrClasificacionCambioRepresentante = 0;
+    $pqrClasificacionInformativas = 0;
+    $pqrClasificacionOtraDependencias = 0;
+    // Fin nuevas
+
     $pqrClasePeticion = 0;
     $pqrClaseQueja = 0;
     $pqrClaseReclamo = 0;
@@ -136,6 +144,21 @@
                 case "NOMENCLATURA":
                     $pqrClasificacionEstratificacion ++;
                     break; 
+                case "CERTIFICADO_EXISTENCIA";
+                    $pqrClasificacionCertificadoExistencia ++;
+                    break;
+                case "INSCRIPCION_PERSONERIA";
+                    $pqrClasificacionInscripcionPersoneria ++;
+                    break;
+                case "CAMBIO_REPRESENTA";
+                    $pqrClasificacionCambioRepresentante ++;
+                    break;
+                case "INFORMATIVA";
+                    $pqrClasificacionInformativas ++;
+                    break;
+                case "OTRA_DEPENDENCIA";
+                    $pqrClasificacionOtraDependencias ++;
+                    break;
             }
 
 
@@ -355,6 +378,28 @@
             <td>Tutela </td>
             <td><h4><b>&nbsp;&nbsp;&nbsp;<?php echo $pqrClasificacionTutela; ?></td>
         </tr>
+
+        <tr>
+            <td>Certificado de existencia y representacion legal </td>
+            <td><h4><b>&nbsp;&nbsp;&nbsp;<?php echo $pqrClasificacionCertificadoExistencia; ?></td>
+        </tr>
+        <tr>
+            <td>Inscripcion de personeria juridica, representante legal y/o revisor fiscal </td>
+            <td><h4><b>&nbsp;&nbsp;&nbsp;<?php echo $pqrClasificacionInscripcionPersoneria; ?></td>
+        </tr>
+        <tr>
+            <td>Cambio representante legal y/o revisor fiscal </td>
+            <td><h4><b>&nbsp;&nbsp;&nbsp;<?php echo $pqrClasificacionCambioRepresentante; ?></td>
+        </tr>
+        <tr>
+            <td>Informativa </td>
+            <td><h4><b>&nbsp;&nbsp;&nbsp;<?php echo $pqrClasificacionInformativas; ?></td>
+        </tr>
+        <tr>
+            <td>Otras secretarias / dependencias </td>
+            <td><h4><b>&nbsp;&nbsp;&nbsp;<?php echo $pqrClasificacionOtraDependencias; ?></td>
+        </tr>
+
         <tr>
             <td>No clasificada </td>
             <td><h4><b>&nbsp;&nbsp;&nbsp;<?php echo $pqrClasificacionNC; ?></td>
