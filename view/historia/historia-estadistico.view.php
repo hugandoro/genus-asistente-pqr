@@ -141,7 +141,7 @@
                 case "NOMENCLATURA":
                     $pqrClasificacionNomenclatura ++;
                     break; 
-                case "NOMENCLATURA":
+                case "ESTRATIFICACION":
                     $pqrClasificacionEstratificacion ++;
                     break; 
                 case "CERTIFICADO_EXISTENCIA";
